@@ -1,0 +1,204 @@
+<!-- saved from url=(0014)about:internet -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Key.as</title>
+<link rel="stylesheet" type="text/css" href="../../../../../SourceStyles.css"/>
+</head>
+
+<body><pre><span class="ActionScriptpackage">package</span> <span class="ActionScriptDefault_Text">net</span><span class="ActionScriptOperator">.</span><span class="ActionScriptDefault_Text">flashpunk</span><span class="ActionScriptOperator">.</span><span class="ActionScriptDefault_Text">utils</span> 
+<span class="ActionScriptBracket/Brace">{</span>
+    <span class="ActionScriptASDoc">/**
+     * Contains static key constants to be used by Input.
+     */</span>
+    <span class="ActionScriptReserved">public</span> <span class="ActionScriptclass">class</span> <span class="ActionScriptDefault_Text">Key</span> 
+    <span class="ActionScriptBracket/Brace">{</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">ANY</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> -1;
+        
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">LEFT</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 37;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">UP</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 38;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">RIGHT</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 39;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">DOWN</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 40;
+        
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">ENTER</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 13;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">COMMAND</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 15;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">CONTROL</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 17;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">SPACE</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 32;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">SHIFT</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 16;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">BACKSPACE</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 8;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">CAPS_LOCK</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 20;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">DELETE</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 46;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">END</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 35;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">ESCAPE</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 27;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">HOME</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 36;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">INSERT</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 45;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">TAB</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 9;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">PAGE_DOWN</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 34;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">PAGE_UP</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 33;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">LEFT_SQUARE_BRACKET</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 219;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">RIGHT_SQUARE_BRACKET</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 221;
+        
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">A</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 65;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">B</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 66;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">C</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 67;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">D</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 68;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">E</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 69;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">F</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 70;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">G</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 71;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">H</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 72;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">I</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 73;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">J</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 74;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">K</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 75;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">L</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 76;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">M</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 77;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">N</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 78;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">O</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 79;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">P</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 80;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">Q</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 81;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">R</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 82;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">S</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 83;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">T</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 84;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">U</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 85;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">V</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 86;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">W</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 87;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">X</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 88;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">Y</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 89;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">Z</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 90;
+        
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">F1</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 112;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">F2</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 113;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">F3</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 114;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">F4</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 115;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">F5</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 116;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">F6</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 117;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">F7</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 118;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">F8</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 119;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">F9</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 120;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">F10</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 121;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">F11</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 122;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">F12</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 123;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">F13</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 124;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">F14</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 125;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">F15</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 126;
+        
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">DIGIT_0</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 48;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">DIGIT_1</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 49;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">DIGIT_2</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 50;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">DIGIT_3</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 51;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">DIGIT_4</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 52;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">DIGIT_5</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 53;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">DIGIT_6</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 54;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">DIGIT_7</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 55;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">DIGIT_8</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 56;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">DIGIT_9</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 57;
+
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">NUMPAD_0</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 96;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">NUMPAD_1</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 97;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">NUMPAD_2</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 98;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">NUMPAD_3</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 99;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">NUMPAD_4</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 100;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">NUMPAD_5</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 101;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">NUMPAD_6</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 102;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">NUMPAD_7</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 103;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">NUMPAD_8</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 104;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">NUMPAD_9</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 105;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">NUMPAD_ADD</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 107;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">NUMPAD_DECIMAL</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 110;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">NUMPAD_DIVIDE</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 111;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">NUMPAD_ENTER</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 108;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">NUMPAD_MULTIPLY</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 106;
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptReserved">const</span> <span class="ActionScriptDefault_Text">NUMPAD_SUBTRACT</span>:<span class="ActionScriptDefault_Text">int</span> <span class="ActionScriptOperator">=</span> 109;
+        
+        <span class="ActionScriptASDoc">/**
+         * Returns the name of the key.
+         * @param    char        The key to name.
+         * @return    The name.
+         */</span>
+        <span class="ActionScriptReserved">public</span> <span class="ActionScriptReserved">static</span> <span class="ActionScriptfunction">function</span> <span class="ActionScriptDefault_Text">name</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">char</span>:<span class="ActionScriptDefault_Text">int</span><span class="ActionScriptBracket/Brace">)</span>:<span class="ActionScriptDefault_Text">String</span>
+        <span class="ActionScriptBracket/Brace">{</span>
+            <span class="ActionScriptReserved">if</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">char</span> <span class="ActionScriptOperator">&gt;=</span> <span class="ActionScriptDefault_Text">A</span> <span class="ActionScriptOperator">&amp;&amp;</span> <span class="ActionScriptDefault_Text">char</span> <span class="ActionScriptOperator">&lt;=</span> <span class="ActionScriptDefault_Text">Z</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">String</span><span class="ActionScriptOperator">.</span><span class="ActionScriptDefault_Text">fromCharCode</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">char</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptReserved">if</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">char</span> <span class="ActionScriptOperator">&gt;=</span> <span class="ActionScriptDefault_Text">F1</span> <span class="ActionScriptOperator">&amp;&amp;</span> <span class="ActionScriptDefault_Text">char</span> <span class="ActionScriptOperator">&lt;=</span> <span class="ActionScriptDefault_Text">F15</span><span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptReserved">return</span> <span class="ActionScriptString">"F"</span> <span class="ActionScriptOperator">+</span> <span class="ActionScriptDefault_Text">String</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">char</span> <span class="ActionScriptOperator">-</span> 111<span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptReserved">if</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">char</span> <span class="ActionScriptOperator">&gt;=</span> 96 <span class="ActionScriptOperator">&amp;&amp;</span> <span class="ActionScriptDefault_Text">char</span> <span class="ActionScriptOperator">&lt;=</span> 105<span class="ActionScriptBracket/Brace">)</span> <span class="ActionScriptReserved">return</span> <span class="ActionScriptString">"NUMPAD "</span> <span class="ActionScriptOperator">+</span> <span class="ActionScriptDefault_Text">String</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">char</span> <span class="ActionScriptOperator">-</span> 96<span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptReserved">switch</span> <span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">char</span><span class="ActionScriptBracket/Brace">)</span>
+            <span class="ActionScriptBracket/Brace">{</span>
+                <span class="ActionScriptReserved">case</span> <span class="ActionScriptDefault_Text">LEFT</span>:
+                <span class="ActionScriptReserved">return</span> <span class="ActionScriptString">"LEFT"</span>;
+                
+                <span class="ActionScriptReserved">case</span> <span class="ActionScriptDefault_Text">UP</span>:
+                <span class="ActionScriptReserved">return</span> <span class="ActionScriptString">"UP"</span>;
+                
+                <span class="ActionScriptReserved">case</span> <span class="ActionScriptDefault_Text">RIGHT</span>:
+                <span class="ActionScriptReserved">return</span> <span class="ActionScriptString">"RIGHT"</span>;
+                
+                <span class="ActionScriptReserved">case</span> <span class="ActionScriptDefault_Text">DOWN</span>:
+                <span class="ActionScriptReserved">return</span> <span class="ActionScriptString">"DOWN"</span>;
+                
+                <span class="ActionScriptReserved">case</span> <span class="ActionScriptDefault_Text">ENTER</span>:
+                <span class="ActionScriptReserved">return</span> <span class="ActionScriptString">"ENTER"</span>;
+                
+                <span class="ActionScriptReserved">case</span> <span class="ActionScriptDefault_Text">CONTROL</span>:
+                <span class="ActionScriptReserved">return</span> <span class="ActionScriptString">"CONTROL"</span>;
+                
+                <span class="ActionScriptReserved">case</span> <span class="ActionScriptDefault_Text">SPACE</span>:
+                <span class="ActionScriptReserved">return</span> <span class="ActionScriptString">"SPACE"</span>;
+                
+                <span class="ActionScriptReserved">case</span> <span class="ActionScriptDefault_Text">SHIFT</span>:
+                <span class="ActionScriptReserved">return</span> <span class="ActionScriptString">"SHIFT"</span>;
+                
+                <span class="ActionScriptReserved">case</span> <span class="ActionScriptDefault_Text">BACKSPACE</span>:
+                <span class="ActionScriptReserved">return</span> <span class="ActionScriptString">"BACKSPACE"</span>;
+                
+                <span class="ActionScriptReserved">case</span> <span class="ActionScriptDefault_Text">CAPS_LOCK</span>:
+                <span class="ActionScriptReserved">return</span> <span class="ActionScriptString">"CAPS LOCK"</span>;
+                
+                <span class="ActionScriptReserved">case</span> <span class="ActionScriptDefault_Text">DELETE</span>:
+                <span class="ActionScriptReserved">return</span> <span class="ActionScriptString">"DELETE"</span>;
+                
+                <span class="ActionScriptReserved">case</span> <span class="ActionScriptDefault_Text">END</span>:
+                <span class="ActionScriptReserved">return</span> <span class="ActionScriptString">"END"</span>;
+                
+                <span class="ActionScriptReserved">case</span> <span class="ActionScriptDefault_Text">ESCAPE</span>:     
+                <span class="ActionScriptReserved">return</span> <span class="ActionScriptString">"ESCAPE"</span>;
+                
+                <span class="ActionScriptReserved">case</span> <span class="ActionScriptDefault_Text">HOME</span>:         
+                <span class="ActionScriptReserved">return</span> <span class="ActionScriptString">"HOME"</span>;
+                
+                <span class="ActionScriptReserved">case</span> <span class="ActionScriptDefault_Text">INSERT</span>:     
+                <span class="ActionScriptReserved">return</span> <span class="ActionScriptString">"INSERT"</span>;
+                
+                <span class="ActionScriptReserved">case</span> <span class="ActionScriptDefault_Text">TAB</span>:         
+                <span class="ActionScriptReserved">return</span> <span class="ActionScriptString">"TAB"</span>;
+                
+                <span class="ActionScriptReserved">case</span> <span class="ActionScriptDefault_Text">PAGE_DOWN</span>:
+                <span class="ActionScriptReserved">return</span> <span class="ActionScriptString">"PAGE DOWN"</span>;
+                
+                <span class="ActionScriptReserved">case</span> <span class="ActionScriptDefault_Text">PAGE_UP</span>:     
+                <span class="ActionScriptReserved">return</span> <span class="ActionScriptString">"PAGE UP"</span>;
+                
+                <span class="ActionScriptReserved">case</span> <span class="ActionScriptDefault_Text">NUMPAD_ADD</span>:        
+                <span class="ActionScriptReserved">return</span> <span class="ActionScriptString">"NUMPAD ADD"</span>;
+                
+                <span class="ActionScriptReserved">case</span> <span class="ActionScriptDefault_Text">NUMPAD_DECIMAL</span>:    
+                <span class="ActionScriptReserved">return</span> <span class="ActionScriptString">"NUMPAD DECIMAL"</span>;
+                
+                <span class="ActionScriptReserved">case</span> <span class="ActionScriptDefault_Text">NUMPAD_DIVIDE</span>:        
+                <span class="ActionScriptReserved">return</span> <span class="ActionScriptString">"NUMPAD DIVIDE"</span>;
+                
+                <span class="ActionScriptReserved">case</span> <span class="ActionScriptDefault_Text">NUMPAD_ENTER</span>:        
+                <span class="ActionScriptReserved">return</span> <span class="ActionScriptString">"NUMPAD ENTER"</span>;
+                
+                <span class="ActionScriptReserved">case</span> <span class="ActionScriptDefault_Text">NUMPAD_MULTIPLY</span>:    
+                <span class="ActionScriptReserved">return</span> <span class="ActionScriptString">"NUMPAD MULTIPLY"</span>;
+                
+                <span class="ActionScriptReserved">case</span> <span class="ActionScriptDefault_Text">NUMPAD_SUBTRACT</span>:    
+                <span class="ActionScriptReserved">return</span> <span class="ActionScriptString">"NUMPAD SUBTRACT"</span>;
+                
+                <span class="ActionScriptReserved">default</span>:
+                <span class="ActionScriptReserved">return</span> <span class="ActionScriptDefault_Text">String</span><span class="ActionScriptOperator">.</span><span class="ActionScriptDefault_Text">fromCharCode</span><span class="ActionScriptBracket/Brace">(</span><span class="ActionScriptDefault_Text">char</span><span class="ActionScriptBracket/Brace">)</span>;
+            <span class="ActionScriptBracket/Brace">}</span>
+        <span class="ActionScriptBracket/Brace">}</span>
+    <span class="ActionScriptBracket/Brace">}</span>
+<span class="ActionScriptBracket/Brace">}</span>
+</pre></body>
+</html>
