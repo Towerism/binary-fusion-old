@@ -3,7 +3,7 @@
 #################
 obj/*
 *.as3proj
-# bin-debug/*
+bin-debug/*
 
 #################
 ## Eclipse
