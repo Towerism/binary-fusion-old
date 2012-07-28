@@ -119,6 +119,7 @@ UpgradeLog*.XML
 #################
 obj/*
 *.as3proj
+bin-debug/*
 
 ############
 ## Windows
