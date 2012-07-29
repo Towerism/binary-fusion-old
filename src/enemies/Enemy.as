@@ -18,22 +18,27 @@ package enemies {
 		protected static const OUT_OF_BOUNDS:String = "outofbounds";
 		protected static const DEATH:String = "death";
 		
-		private var explosionType:String;
-		private var gfx:Image = new Image(Assets.GFX_ENEMY);
+		private var _explosionType:String;
+		private var _gfx:Image = new Image(Assets.GFX_ENEMY);
 
-		public function Enemy() {
-			super(FP.clamp(FP.rand(FP.screen.width - GC.GFX_ENEMY_W), GC.GFX_ENEMY_W, FP.screen.width - 2 * GC.GFX_ENEMY_W), -10);
-			this.graphic = gfx;
-			gfx.centerOO();
-			this.setHitbox(10, 8, gfx.width / 2, gfx.height / 2 - 1);
+		public function Enemy(x:Number = 0, y:Number = 0) {
+			super(x, y);
+			_gfx.centerOO();
+			this.graphic = _gfx;
+			
+			_gfx.scrollX = 0;
+			_gfx.scrollY = 0;
+			
+			this.setHitbox(10, 8, _gfx.width / 2, _gfx.height / 2 - 1);
 			this.type = GC.TYPE_ENEMY;
+			layer = GC.LAYER_ENEMY;
 
 			myColor = NONE; //use default value
 		}
 
 		override public function update():void {
 			y += FP.elapsed * GC.ENEMY_SPEED;
-			if (y > FP.screen.height)
+			if (y > FP.screen.height + 5)
 				destroy(OUT_OF_BOUNDS);
 			var b:Bullet = this.collideTypes([GC.TYPE_WHITE_BULLET, GC.TYPE_BLACK_BULLET], x, y) as Bullet;
 			if (b != null) {
@@ -46,19 +51,18 @@ package enemies {
 			b.world.remove(b);
 		}
 
-		protected function doScore():void {
-			GV.SCORE += GC.ENEMY_VALUE;
-		}
-
 		public function destroy(reason:String):void {
-			if (reason == DEATH)
-				GV.PARTICLE_CONTROLLER.explodeStandard(x, y, explosionType);
-			this.world.remove(this);
+			if (reason == DEATH) {
+				GV.SCORE += GC.ENEMY_VALUE;
+				GV.CURRENT_GUI.updateScore();
+				GV.PARTICLE_CONTROLLER.explodeStandard(x, y, _explosionType);
+			}
+			this.world.recycle(this);
 		}
 
 		protected function set myColor(s:String):void {
 			Image(graphic).color = (s == WHITE) ? 0xffffff : 0x0;
-			this.explosionType = (s == WHITE) ? GC.EXP_ENEMY_W : GC.EXP_ENEMY_B;
+			this._explosionType = (s == WHITE) ? GC.EXP_ENEMY_W : GC.EXP_ENEMY_B;
 		}
 	}
 }

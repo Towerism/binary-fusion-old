@@ -16,7 +16,6 @@ package enemies {
 
 		override protected function hit(b:Bullet):void {
 			if (b.type == GC.TYPE_WHITE_BULLET) {
-				doScore();
 				destroy(Enemy.DEATH);
 			}
 			super.hit(b);

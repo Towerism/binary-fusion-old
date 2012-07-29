@@ -4,6 +4,7 @@
 obj/*
 *.as3proj
 bin-debug/*
+assets/psd/*
 
 #################
 ## Eclipse

@@ -1,7 +1,7 @@
 package worlds {
 
 	import net.flashpunk.*;
-	import net.flashpunk.graphics.Text;
+	import net.flashpunk.graphics.*;
 	import net.flashpunk.utils.Input;
 
 	import enemies.*;
@@ -13,42 +13,45 @@ package worlds {
 	 */
 	public class GameWorld extends World {
 
-		private var player:Player;
-		private var scoreText:Text;
-
 		public function GameWorld() {
 			super();
 		}
 
 		override public function begin():void {
 			GV.reset();
-			GV.PLAYER.x = Input.mouseX;
-			GV.PLAYER.y = 250;
+			GV.PLAYER.x = FP.halfWidth;
+			GV.PLAYER.y = GC.PLAYER_START_Y;
 			this.add(GV.PLAYER);
 			this.add(GV.PARTICLE_CONTROLLER);
-
-			scoreText = new Text("0", 0, 0);
-			scoreText.size = 8;
-			addGraphic(scoreText);
+			this.add(GV.CURRENT_GUI);
+			
+			var b:Backdrop = new Backdrop(Assets.GFX_BACKDROP, true, true);
+			b.alpha = 0.3;
+			
+			var e:Entity = new Entity;
+			e.graphic = b;
+			e.layer = GC.LAYER_BACKDROP;
+			add(e);
 		}
 
 		override public function update():void {
-			if (this.classCount(Player) != 0) {
-				if (this.typeCount(GC.TYPE_ENEMY) == 0 || FP.random < GC.ENEMY_SPAWN_CHANCE) {
-					var e:Entity;
-					e = (FP.rand(2)) ? add(new WhiteEnemy) : add(new BlackEnemy);
-				}
+			var isTrue:Boolean = (GV.GAME_IS_NEW) ? GV.PLAYER.y <= GC.PLAYER_AXIS_Y : true;
+			if (isTrue && (this.typeCount(GC.TYPE_ENEMY) == 0 || FP.random < GC.ENEMY_SPAWN_CHANCE)) {
+				var e:Entity;
+				e = (FP.rand(2)) ? create(WhiteEnemy) : create(BlackEnemy);
+				e.x = FP.clamp(FP.rand(FP.width), e.width, FP.width - e.width);
+				e.y = -GC.ENEMY_SPEED;	
+				GV.GAME_IS_NEW = false;
 			}
 
-
-			if (this.classCount(Player) == 0 && typeCount(GC.TYPE_ENEMY) == 0) {
-				GV.SCORE = 0;
-				player = new Player(Input.mouseX - GC.GFX_PLAYER_W / 2, 250);
-				add(player);
+			if (this.classCount(Player) == 0 && GV.PARTICLE_CONTROLLER.particleCount == 0) {
+				GV.PLAYER = new Player(FP.halfWidth, GC.PLAYER_START_Y, true);
+				add(GV.PLAYER);
 			}
-
-			scoreText.text = GV.SCORE.toString();
-
+			
+			if (GV.PARTICLE_CONTROLLER.particleCount == 0) {
+				if (GV.LIVES <= 0) FP.world = new GameOver;
+			}
 			super.update();
 		}
 	}

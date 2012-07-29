@@ -1,10 +1,7 @@
 package bullets {
 
 	import flash.display.BitmapData;
-	import net.flashpunk.Entity;
-	import net.flashpunk.FP;
-	import net.flashpunk.Graphic;
-	import net.flashpunk.Mask;
+	import net.flashpunk.*;
 	import net.flashpunk.graphics.Image;
 
 	/**
@@ -12,11 +9,16 @@ package bullets {
 	 * @author Martin L. Fracker, Jr.
 	 */
 	public class Bullet extends Entity {
+		
+		private var _gfx:Image = new Image(new BitmapData(2, 2, true, 0xffffffff));
 
 		public function Bullet(x:Number = 0, y:Number = 0) {
-			super(x, y);
+			super(x, y);			
 			this.setHitbox(2, 2);
-			this.graphic = new Image(new BitmapData(2, 2, true, 0xffffffff));
+			this.graphic = _gfx;
+			_gfx.scrollX = 0;
+			_gfx.scrollY = 0;
+			layer = GC.LAYER_BULLET;
 		}
 
 		override public function update():void {
@@ -26,7 +28,7 @@ package bullets {
 		}
 
 		public function destroy():void {
-			this.world.remove(this);
+			this.world.recycle(this);
 		}
 	}
 }

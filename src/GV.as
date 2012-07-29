@@ -8,7 +8,9 @@ package {
 	 * @author Martin L. Fracker, Jr.
 	 */
 	public class GV {
+		
 		public static var CURRENT_GUI:GUI = null;
+		public static var GAME_IS_NEW:Boolean = true;
 		public static var LIVES:Number = GC.MAX_LIVES;
 		public static var PARTICLE_CONTROLLER:ParticleController = null;
 		public static var PLAYER:Player = null;
@@ -16,6 +18,7 @@ package {
 		
 		public static function reset():void {
 			CURRENT_GUI = new GUI;
+			GAME_IS_NEW = true;
 			LIVES = GC.MAX_LIVES;
 			PARTICLE_CONTROLLER = new ParticleController;			
 			PLAYER = new Player;

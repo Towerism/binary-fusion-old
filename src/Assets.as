@@ -15,6 +15,9 @@ package {
 		public static const GFX_TITLE_TOP:Class;
 		
 		[Embed(source = "/../assets/background_02.png")]
-		public static const GFX_TITLE_BOTTOM:Class;		
+		public static const GFX_TITLE_BOTTOM:Class;
+		
+		[Embed(source="/../assets/backdrop.png")]
+		public static const GFX_BACKDROP:Class;
 	}
 }
