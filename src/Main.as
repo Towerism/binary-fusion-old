@@ -4,6 +4,7 @@ package {
 	import net.flashpunk.*;
 	import net.flashpunk.utils.Input;
 	import net.flashpunk.utils.Key;
+	import net.flashpunk.Sfx;
 
 	import worlds.*;
 	
@@ -14,8 +15,8 @@ package {
 	public class Main extends Engine {
 
 		public function Main():void {
-			super(160, 300, 60, false);
-			FP.screen.scale = 2;
+			super(320, 600, 60, false);
+			//FP.screen.scale = 1;
 			FP.screen.color = GC.SCREEN_COLOR;
 
 			//FP.console.enable();

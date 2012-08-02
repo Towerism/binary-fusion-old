@@ -18,6 +18,7 @@ package worlds {
 		private var _textOutTween:VarTween;
 		private var _textInTween:VarTween;
 		private var _textTotalTime:Number = 1;
+		private var _timer:Number = 0;
 
 		public function TitleWorld() {
 			_hasPlayedTitle = false;
@@ -39,11 +40,7 @@ package worlds {
 			bottomTween.tween(_bottomTitle, "y", FP.screen.height / 2, 1.5, Ease.bounceOut);
 			addTween(bottomTween, true);
 
-			_infoText = new Text("Press Z");
-			_infoText.x = (FP.screen.width - _infoText.width) / 2;
-			_infoText.y = FP.screen.height - 20;
-			_infoText.color = 0;
-			_infoText.alpha = 0;
+			_infoText = new Text("Press Z", 0, FP.screen.height - 40, {size:32, align:"center", width:FP.screen.width, alpha:0, color:0});
 			addGraphic(_infoText, -1);
 
 			_textInTween = new VarTween(onTextTweenIn, Tween.PERSIST);
@@ -70,9 +67,18 @@ package worlds {
 		}
 
 		override public function update():void {
+			
+			_timer += FP.elapsed;
+			trace(_timer);
+			if (_timer >= 0.5 && !Audio.bgloop.playing) {
+				Audio.bgloop.loop();
+			}
+			
 			if (Input.pressed(Key.Z) && _hasPlayedTitle) {
 				FP.world = new GameWorld;
 			}
+			
+			super.update();
 		}
 	}
 }

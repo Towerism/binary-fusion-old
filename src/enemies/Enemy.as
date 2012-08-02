@@ -20,6 +20,7 @@ package enemies {
 		
 		private var _explosionType:String;
 		private var _gfx:Image = new Image(Assets.GFX_ENEMY);
+		private var rotationSpeed:Number = 180;
 
 		public function Enemy(x:Number = 0, y:Number = 0) {
 			super(x, y);
@@ -29,7 +30,7 @@ package enemies {
 			_gfx.scrollX = 0;
 			_gfx.scrollY = 0;
 			
-			this.setHitbox(10, 8, _gfx.width / 2, _gfx.height / 2 - 1);
+			this.setHitbox(20, 20, _gfx.width / 2, _gfx.height / 2);
 			this.type = GC.TYPE_ENEMY;
 			layer = GC.LAYER_ENEMY;
 
@@ -44,6 +45,8 @@ package enemies {
 			if (b != null) {
 				hit(b);
 			}
+			
+			_gfx.angle += rotationSpeed * FP.elapsed;
 		}
 
 		protected function hit(b:Bullet):void {

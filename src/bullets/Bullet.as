@@ -10,7 +10,10 @@ package bullets {
 	 */
 	public class Bullet extends Entity {
 		
-		private var _gfx:Image = new Image(new BitmapData(2, 2, true, 0xffffffff));
+		protected static var WHITE:String = "white";
+		protected static var BLACK:String = "black";
+		
+		private var _gfx:Image = new Image(new BitmapData(4, 4, false, 0xffffff));
 
 		public function Bullet(x:Number = 0, y:Number = 0) {
 			super(x, y);			
@@ -29,6 +32,11 @@ package bullets {
 
 		public function destroy():void {
 			this.world.recycle(this);
+		}
+		
+		protected function set myColor(s:String):void {
+			Image(graphic).color = (s == WHITE) ? 0xffffff : 0x000000;
+			this.type = (s == WHITE) ? GC.TYPE_WHITE_BULLET : GC.TYPE_BLACK_BULLET;
 		}
 	}
 }

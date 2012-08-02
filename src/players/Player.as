@@ -58,7 +58,7 @@ package players {
 			if (y >= GC.PLAYER_START_Y) {
 				_spawnWait += FP.elapsed;
 				if (_spawnWait >= GC.PLAYER_SPAWN_WAIT) {
-					_introTween.tween(this, "y", GC.PLAYER_AXIS_Y, 1.5, Ease.quadOut);
+					_introTween.tween(this, "y", GC.PLAYER_AXIS_X, 1.5, Ease.quadOut);
 					_introTween.start();		
 				}
 			}
@@ -78,8 +78,8 @@ package players {
 
 			if (Input.pressed("shoot") && !checkTweenActive()) {
 				var b:Bullet = this.world.create(_currentBullet) as Bullet;
-				b.x = x - 1;
-				b.y = y - 1;
+				b.x = x - 2;
+				b.y = y - 2;
 			}
 
 			if (Input.pressed("color") && !checkTweenActive()) {

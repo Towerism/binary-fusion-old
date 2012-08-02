@@ -1,6 +1,7 @@
 package {
 	
 	import net.flashpunk.FP;
+	import net.flashpunk.Sfx;
 
 	/**
 	 * ...
@@ -11,15 +12,15 @@ package {
 		public static const SCREEN_COLOR:uint = 0x888888;
 		
 		//Non Player costants
-		public static const BULLET_SPEED:int = 100;		
+		public static const BULLET_SPEED:int = 200;		
 		public static const ENEMY_SPAWN_CHANCE:Number = 0.01;
 		public static const ENEMY_VALUE:int = 100;
-		public static const ENEMY_SPEED:int = 40;
+		public static const ENEMY_SPEED:int = 80;
 		
 		//Player / Game constants
-		public static const PLAYER_AXIS_Y:Number = FP.height - 25;
+		public static const PLAYER_AXIS_X:Number = FP.height - 50;
 		public static const PLAYER_START_Y:Number = FP.height + 10;
-		public static const PLAYER_SPEED:Number = 100;
+		public static const PLAYER_SPEED:Number = 200;
 		public static const MAX_LIVES:Number = 3;
 		public static const PLAYER_SPAWN_WAIT:Number = 0.5;
 		public static const PLAYER_INVINCIBLE_TIME:Number = PLAYER_SPAWN_WAIT + 2.7;

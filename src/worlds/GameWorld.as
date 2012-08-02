@@ -35,7 +35,7 @@ package worlds {
 		}
 
 		override public function update():void {
-			var isTrue:Boolean = (GV.GAME_IS_NEW) ? GV.PLAYER.y <= GC.PLAYER_AXIS_Y : true;
+			var isTrue:Boolean = (GV.GAME_IS_NEW) ? GV.PLAYER.y <= GC.PLAYER_AXIS_X : true;
 			if (isTrue && (this.typeCount(GC.TYPE_ENEMY) == 0 || FP.random < GC.ENEMY_SPAWN_CHANCE)) {
 				var e:Entity;
 				e = (FP.rand(2)) ? create(WhiteEnemy) : create(BlackEnemy);

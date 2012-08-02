@@ -11,57 +11,49 @@ package emitters {
 	 */
 	public class ParticleController extends Entity {
 
-		private var _particleEmitter:Emitter;
+		private var _explosionEmitter:Emitter;
 		public var _amount:Array = new Array;
 
-		public function ParticleController(_addRangeDistance:int = 1, _divideDuration:int = 25, _divideRangeDuration:int = 100) {
-			_particleEmitter = new Emitter(new BitmapData(1, 1), 1, 1);
-			_particleEmitter.scrollX = 0;
-			_particleEmitter.scrollY = 0;
-			
-			//scaleable variables
-			var addRangeDistance:int = _addRangeDistance;
-			var divideDuration:int = _divideDuration;
-			var divideRangeDuration:int = _divideRangeDuration;
+		//parameters are variables that allow you to scale the entire particle system
+		public function ParticleController(multiplyDistance:int = 2, addRangeDistance:int = 1, divideDuration:int = 25, divideRangeDuration:int = 100) {
+			_explosionEmitter = new Emitter(new BitmapData(2, 2), 2, 2);
+			_explosionEmitter.scrollX = 0;
+			_explosionEmitter.scrollY = 0;
 			
 			//player explosions
-			_particleEmitter.newType("test", [0]);
-			_particleEmitter.setAlpha("test", 1, 0, Ease.quadIn);
-			_particleEmitter.setColor("test", 0xffffff, 0xffffff);
-			_particleEmitter.setMotion("test", 0, 50, 2, 360, -50 + 1, 0.5 , Ease.quadOut);
 			
 			_amount[GC.EXP_PLAYER_W] = 50;
 			_amount[GC.EXP_PLAYER_B] = _amount[GC.EXP_PLAYER_W];
-			_particleEmitter.newType(GC.EXP_PLAYER_W, [0]);
-			_particleEmitter.setAlpha(GC.EXP_PLAYER_W, 1, 0, Ease.quadIn);
-			_particleEmitter.setColor(GC.EXP_PLAYER_W, 0xffffff, 0xffffff);
-			_particleEmitter.setMotion(GC.EXP_PLAYER_W, 0, _amount[GC.EXP_PLAYER_W], _amount[GC.EXP_PLAYER_W] / divideDuration, 360, -_amount[GC.EXP_PLAYER_W] + addRangeDistance, _amount[GC.EXP_PLAYER_W] / divideRangeDuration, Ease.quadOut);
+			_explosionEmitter.newType(GC.EXP_PLAYER_W, [0]);
+			_explosionEmitter.setAlpha(GC.EXP_PLAYER_W, 1, 0, Ease.quadIn);
+			_explosionEmitter.setColor(GC.EXP_PLAYER_W, 0xffffff, 0xffffff);
+			_explosionEmitter.setMotion(GC.EXP_PLAYER_W, 0, _amount[GC.EXP_PLAYER_W] * multiplyDistance, _amount[GC.EXP_PLAYER_W] / divideDuration, 360, -_amount[GC.EXP_PLAYER_W] * multiplyDistance + addRangeDistance, _amount[GC.EXP_PLAYER_W] / divideRangeDuration, Ease.quadOut);
 			
-			_particleEmitter.newType(GC.EXP_PLAYER_B, [0]);
-			_particleEmitter.setAlpha(GC.EXP_PLAYER_B, 1, 0, Ease.quadIn);
-			_particleEmitter.setColor(GC.EXP_PLAYER_B, 0x0, 0x0);
-			_particleEmitter.setMotion(GC.EXP_PLAYER_B, 0, _amount[GC.EXP_PLAYER_W], _amount[GC.EXP_PLAYER_W] / divideDuration, 360, -_amount[GC.EXP_PLAYER_W] + addRangeDistance, _amount[GC.EXP_PLAYER_W] / divideRangeDuration, Ease.quadOut);
+			_explosionEmitter.newType(GC.EXP_PLAYER_B, [0]);
+			_explosionEmitter.setAlpha(GC.EXP_PLAYER_B, 1, 0, Ease.quadIn);
+			_explosionEmitter.setColor(GC.EXP_PLAYER_B, 0x0, 0x0);
+			_explosionEmitter.setMotion(GC.EXP_PLAYER_B, 0, _amount[GC.EXP_PLAYER_B] * multiplyDistance, _amount[GC.EXP_PLAYER_B] / divideDuration, 360, -_amount[GC.EXP_PLAYER_B] * multiplyDistance + addRangeDistance, _amount[GC.EXP_PLAYER_B] / divideRangeDuration, Ease.quadOut);
 			
 			//enemy explosions
 			_amount[GC.EXP_ENEMY_W] = 20;
 			_amount[GC.EXP_ENEMY_B] = _amount[GC.EXP_ENEMY_W];
-			_particleEmitter.newType(GC.EXP_ENEMY_W, [0]);
-			_particleEmitter.setAlpha(GC.EXP_ENEMY_W, 1, 0, Ease.quadIn);
-			_particleEmitter.setColor(GC.EXP_ENEMY_W, 0xffffff, 0xffffff);
-			_particleEmitter.setMotion(GC.EXP_ENEMY_W, 0, _amount[GC.EXP_ENEMY_W], _amount[GC.EXP_ENEMY_W] / divideDuration, 360, -_amount[GC.EXP_ENEMY_W] + addRangeDistance, _amount[GC.EXP_ENEMY_W] / divideRangeDuration, Ease.quadOut);
+			_explosionEmitter.newType(GC.EXP_ENEMY_W, [0]);
+			_explosionEmitter.setAlpha(GC.EXP_ENEMY_W, 1, 0, Ease.quadIn);
+			_explosionEmitter.setColor(GC.EXP_ENEMY_W, 0xffffff, 0xffffff);
+			_explosionEmitter.setMotion(GC.EXP_ENEMY_W, 0, _amount[GC.EXP_ENEMY_W] * multiplyDistance, _amount[GC.EXP_ENEMY_W] / divideDuration, 360, -_amount[GC.EXP_ENEMY_W] * multiplyDistance + addRangeDistance, _amount[GC.EXP_ENEMY_W] / divideRangeDuration, Ease.quadOut);
 			
-			_particleEmitter.newType(GC.EXP_ENEMY_B, [0]);
-			_particleEmitter.setAlpha(GC.EXP_ENEMY_B, 1, 0, Ease.quadIn);
-			_particleEmitter.setColor(GC.EXP_ENEMY_B, 0x0, 0x0);
-			_particleEmitter.setMotion(GC.EXP_ENEMY_B, 0, _amount[GC.EXP_ENEMY_W], _amount[GC.EXP_ENEMY_W] / divideDuration, 360, -_amount[GC.EXP_ENEMY_W] + addRangeDistance, _amount[GC.EXP_ENEMY_W] / divideRangeDuration, Ease.quadOut);
+			_explosionEmitter.newType(GC.EXP_ENEMY_B, [0]);
+			_explosionEmitter.setAlpha(GC.EXP_ENEMY_B, 1, 0, Ease.quadIn);
+			_explosionEmitter.setColor(GC.EXP_ENEMY_B, 0x0, 0x0);
+			_explosionEmitter.setMotion(GC.EXP_ENEMY_B, 0, _amount[GC.EXP_ENEMY_B] * multiplyDistance, _amount[GC.EXP_ENEMY_B] / divideDuration, 360, -_amount[GC.EXP_ENEMY_B] * multiplyDistance + addRangeDistance, _amount[GC.EXP_ENEMY_B] / divideRangeDuration, Ease.quadOut);
 			
-			_particleEmitter.relative = false;
-			graphic = _particleEmitter;
+			_explosionEmitter.relative = false;
+			graphic = _explosionEmitter;
 		}
 		
 		public function explode(_type:String, posx:Number, posy:Number, amount:int):void {
 			for (var i:int; i < amount; i++) {
-				_particleEmitter.emit(_type, posx, posy);
+				_explosionEmitter.emit(_type, posx, posy);
 			}
 		}
 		
@@ -74,7 +66,7 @@ package emitters {
 		}
 		
 		public function get particleCount():uint {
-			return _particleEmitter.particleCount;
+			return _explosionEmitter.particleCount;
 		}
 	}
 }

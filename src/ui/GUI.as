@@ -16,7 +16,7 @@ package ui {
 		
 		public function GUI() {
 			
-			var guiHeight:Number = 10;
+			var guiHeight:Number = 20;
 			var bar:Image = new Image(new BitmapData(FP.width, int(guiHeight), false, 0x0));
 			bar.scrollX = 0;
 			bar.scrollY = 0;
@@ -25,10 +25,10 @@ package ui {
 			bar.alpha = 0.5;
 			_glist.add(bar);
 			
-			_scoreText = new Text("Score: 0", FP.width - 80, FP.height - guiHeight, { size:8, width:80, scrollX:0, scrollY:0 } );
+			_scoreText = new Text("Score: 0", FP.width - 150, FP.height - guiHeight, { size:16, width:150, scrollX:0, scrollY:0 } );
 			_glist.add(_scoreText);
 			
-			_livesText = new Text("Lives x " + GC.MAX_LIVES, 2, FP.height - guiHeight, { size:8, scrollX:0, scrollY:0 } );
+			_livesText = new Text("Lives x " + GC.MAX_LIVES, 2, FP.height - guiHeight, { size:16, scrollX:0, scrollY:0 } );
 			_glist.add(_livesText);
 			
 			graphic = _glist;

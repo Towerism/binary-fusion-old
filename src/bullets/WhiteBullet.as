@@ -7,7 +7,7 @@ package bullets {
 	public class WhiteBullet extends Bullet {
 		public function WhiteBullet(x:Number = 0, y:Number = 0) {
 			super(x, y);
-			this.type = GC.TYPE_WHITE_BULLET;
+			myColor = Bullet.WHITE;
 		}
 	}
 }
