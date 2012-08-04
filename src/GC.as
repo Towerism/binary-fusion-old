@@ -8,6 +8,12 @@ package {
 	 * @author Martin L. Fracker, Jr.
 	 */
 	public class GC {
+		//Build info
+		public static const VERSION:String = "0.1.21";
+		
+		//Achievement goals
+		public static const GOAL_RACIST:int = 50;
+		
 		//system settings
 		public static const SCREEN_COLOR:uint = 0x888888;
 		
@@ -38,6 +44,7 @@ package {
 		
 		//draw sequence
 		private static var lc:Number = 0;
+		public static const LAYER_ACHIEVEMENT:Number = -10;
 		public static const LAYER_GUI:Number = lc++;
 		public static const LAYER_ENEMY:Number = lc++;
 		public static const LAYER_PLAYER:Number = lc++;

@@ -4,6 +4,7 @@ package worlds {
 	import net.flashpunk.graphics.*;
 	import net.flashpunk.tweens.misc.VarTween;
 	import net.flashpunk.utils.*;
+	import gamejolt.*;
 
 	/**
 	 * { Description of TitleWorld.as here }
@@ -18,7 +19,11 @@ package worlds {
 		private var _textOutTween:VarTween;
 		private var _textInTween:VarTween;
 		private var _textTotalTime:Number = 1;
-		private var _timer:Number = 0;
+		private var _startMusicTimer:Number = 0;
+		private var _creditText:Text;
+		private var _showCreditText:Text;
+		private var _versionText:Text;
+		private var _creditUnlocked:Boolean = false;
 
 		public function TitleWorld() {
 			_hasPlayedTitle = false;
@@ -26,6 +31,16 @@ package worlds {
 		}
 
 		override public function begin():void {
+			_versionText = new Text("v"+GC.VERSION, -2, 2, {size:12, align:"right", width:FP.screen.width, color:0xffffff});
+			addGraphic(_versionText, -5);
+			
+			_creditText = new Text("Credits (Hold X or C)", 2, 2, {size:12, align:"left", width:FP.screen.width, color:0xffffff});
+			addGraphic(_creditText, -5);
+			
+			_showCreditText = new Text("programming/art by Martin (Towerism)\n\nmusic by SkyeWintrest", 0, 50, { width:FP.screen.width, align:"center", size:12, color:0xffffff } );
+			addGraphic(_showCreditText, -5);
+			_showCreditText.visible = true;
+			
 			_topTitle = addGraphic(new Image(Assets.GFX_TITLE_TOP));
 			_topTitle.y = -FP.screen.height / 2;
 
@@ -68,14 +83,25 @@ package worlds {
 
 		override public function update():void {
 			
-			_timer += FP.elapsed;
-			trace(_timer);
-			if (_timer >= 0.5 && !Audio.bgloop.playing) {
+			_startMusicTimer += FP.elapsed;
+			if (_startMusicTimer >= 0.5 && !Audio.bgloop.playing) {
 				Audio.bgloop.loop();
 			}
 			
-			if (Input.pressed(Key.Z) && _hasPlayedTitle) {
+			if (Input.pressed("shoot") && _hasPlayedTitle) {
 				FP.world = new GameWorld;
+			}
+			
+			if (Input.check("color")) {
+				_showCreditText.visible = true;
+				_creditText.visible = false;
+				if (!_creditUnlocked) {
+					_creditUnlocked = true;
+					GV.ACHIEVEMENTS.unlock(Achievements.ACH_CREDITS, false);
+				}
+			} else {
+				_showCreditText.visible = false;
+				_creditText.visible = true;
 			}
 			
 			super.update();

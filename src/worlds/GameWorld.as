@@ -1,5 +1,6 @@
 package worlds {
 
+	import gamejolt.Achievements;
 	import net.flashpunk.*;
 	import net.flashpunk.graphics.*;
 	import net.flashpunk.utils.Input;
@@ -47,6 +48,12 @@ package worlds {
 			if (this.classCount(Player) == 0 && GV.PARTICLE_CONTROLLER.particleCount == 0) {
 				GV.PLAYER = new Player(FP.halfWidth, GC.PLAYER_START_Y, true);
 				add(GV.PLAYER);
+			}
+			
+			FP.log(GV.KILL_COLOR_INROW + " :: " + GV.LAST_COLOR_KILLED);
+			if (GV.KILL_COLOR_INROW >= GC.GOAL_RACIST) {
+				GV.ACHIEVEMENTS.unlock(Achievements.ACH_RACIST, true);
+				GV.KILL_COLOR_INROW = 0;
 			}
 			
 			if (GV.PARTICLE_CONTROLLER.particleCount == 0) {

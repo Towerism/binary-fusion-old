@@ -1,5 +1,7 @@
 package {
 	import emitters.ParticleController;
+	import enemies.Enemy;
+	import gamejolt.Achievements;
 	import players.Player;
 	import ui.GUI;
 
@@ -15,6 +17,12 @@ package {
 		public static var PARTICLE_CONTROLLER:ParticleController = null;
 		public static var PLAYER:Player = null;
 		public static var SCORE:Number = 0;
+		
+		//will use for achievements
+		public static var ACHIEVEMENTS:Achievements = null
+		//these two for racist achievement	
+		public static var KILL_COLOR_INROW:int = 0;
+		public static var LAST_COLOR_KILLED:String = "none";
 		
 		public static function reset():void {
 			CURRENT_GUI = new GUI;

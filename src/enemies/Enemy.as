@@ -59,6 +59,11 @@ package enemies {
 				GV.SCORE += GC.ENEMY_VALUE;
 				GV.CURRENT_GUI.updateScore();
 				GV.PARTICLE_CONTROLLER.explodeStandard(x, y, _explosionType);
+				if (myColor == GV.LAST_COLOR_KILLED) GV.KILL_COLOR_INROW++;
+				else {
+					GV.LAST_COLOR_KILLED = myColor;
+					GV.KILL_COLOR_INROW = 1;
+				}
 			}
 			this.world.recycle(this);
 		}
@@ -66,6 +71,10 @@ package enemies {
 		protected function set myColor(s:String):void {
 			Image(graphic).color = (s == WHITE) ? 0xffffff : 0x0;
 			this._explosionType = (s == WHITE) ? GC.EXP_ENEMY_W : GC.EXP_ENEMY_B;
+		}
+		
+		protected function get myColor():String {
+			return (Image(graphic).color == 0x0) ? Enemy.BLACK : Enemy.WHITE;
 		}
 	}
 }
