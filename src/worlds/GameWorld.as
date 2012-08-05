@@ -4,6 +4,7 @@ package worlds {
 	import net.flashpunk.*;
 	import net.flashpunk.graphics.*;
 	import net.flashpunk.utils.Input;
+	import net.flashpunk.utils.Key;
 
 	import enemies.*;
 	import players.Player;
@@ -20,9 +21,6 @@ package worlds {
 
 		override public function begin():void {
 			GV.reset();
-			GV.PLAYER.x = FP.halfWidth;
-			GV.PLAYER.y = GC.PLAYER_START_Y;
-			this.add(GV.PLAYER);
 			this.add(GV.PARTICLE_CONTROLLER);
 			this.add(GV.CURRENT_GUI);
 			
@@ -36,17 +34,17 @@ package worlds {
 		}
 
 		override public function update():void {
-			var isTrue:Boolean = (GV.GAME_IS_NEW) ? GV.PLAYER.y <= GC.PLAYER_AXIS_X : true;
+			var isTrue:Boolean = (GV.NO_ENEMIES) ? (GV.PLAYER.y == GC.PLAYER_AXIS_X) : true;
 			if (isTrue && (this.typeCount(GC.TYPE_ENEMY) == 0 || FP.random < GC.ENEMY_SPAWN_CHANCE)) {
 				var e:Entity;
 				e = (FP.rand(2)) ? create(WhiteEnemy) : create(BlackEnemy);
 				e.x = FP.clamp(FP.rand(FP.width), e.width, FP.width - e.width);
-				e.y = -GC.ENEMY_SPEED;	
-				GV.GAME_IS_NEW = false;
+				e.y = -GC.ENEMY_SPEED;
+				GV.NO_ENEMIES = false;
 			}
 
-			if (this.classCount(Player) == 0 && GV.PARTICLE_CONTROLLER.particleCount == 0) {
-				GV.PLAYER = new Player(FP.halfWidth, GC.PLAYER_START_Y, true);
+			if (this.classCount(Player) == 0 && GV.PARTICLE_CONTROLLER.particleCount == 0 && GV.GUI_INIT) {
+				GV.PLAYER = new Player(FP.halfWidth, GC.PLAYER_START_Y, (GV.NO_ENEMIES) ? false : true)
 				add(GV.PLAYER);
 			}
 			

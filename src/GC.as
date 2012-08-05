@@ -9,7 +9,7 @@ package {
 	 */
 	public class GC {
 		//Build info
-		public static const VERSION:String = "0.1.21";
+		public static const VERSION:String = "0.2.11";
 		
 		//Achievement goals
 		public static const GOAL_RACIST:int = 50;

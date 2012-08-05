@@ -5,6 +5,7 @@ package worlds {
 	import net.flashpunk.tweens.misc.VarTween;
 	import net.flashpunk.utils.*;
 	import gamejolt.*;
+	import punk.ui.*;
 
 	/**
 	 * { Description of TitleWorld.as here }
@@ -12,73 +13,84 @@ package worlds {
 	 */
 	public class TitleWorld extends World {
 
+		private var _startMusicTimer:Number = 0;
+		
 		private var _topTitle:Entity;
 		private var _bottomTitle:Entity;
-		private var _hasPlayedTitle:Boolean;
-		private var _infoText:Text;
-		private var _textOutTween:VarTween;
-		private var _textInTween:VarTween;
-		private var _textTotalTime:Number = 1;
-		private var _startMusicTimer:Number = 0;
-		private var _creditText:Text;
-		private var _showCreditText:Text;
-		private var _versionText:Text;
+		private var _bottomTitleNormalY:Entity;
+		
+		private var _versionText:Text;	
+		private var _creditText:Text;	
 		private var _creditUnlocked:Boolean = false;
+		
+		private var _playButton:PunkButton;
+		private var _creditButton:PunkButton;
+		private var _musicButton:PunkButton;
+		private var _creditBackButton:PunkButton;
+		
+		private var _buttonsWidth:Number = 100;
+		private var _buttonsHeight:Number = 30;
+		private var _buttonsStartY:Number = 435;
+		private var _buttonsPadding:Number = 10;
+		private var _buttonsSpacing:Number = _buttonsHeight + _buttonsPadding;
+		private var _buttonTweenTimer:Number = 0;
+		private var _startButtons:Boolean = false;
 
 		public function TitleWorld() {
-			_hasPlayedTitle = false;
 			super();
 		}
 
 		override public function begin():void {
+			var b:Backdrop = new Backdrop(Assets.GFX_BACKDROP, true, true);
+			b.alpha = 0.3;
+			var bentity:Entity = addGraphic(b);
+			bentity.layer = 200;
+			
 			_versionText = new Text("v"+GC.VERSION, -2, 2, {size:12, align:"right", width:FP.screen.width, color:0xffffff});
 			addGraphic(_versionText, -5);
 			
-			_creditText = new Text("Credits (Hold X or C)", 2, 2, {size:12, align:"left", width:FP.screen.width, color:0xffffff});
-			addGraphic(_creditText, -5);
-			
-			_showCreditText = new Text("programming/art by Martin (Towerism)\n\nmusic by SkyeWintrest", 0, 50, { width:FP.screen.width, align:"center", size:12, color:0xffffff } );
-			addGraphic(_showCreditText, -5);
-			_showCreditText.visible = true;
+			_creditText = new Text("Programming / Art by Martin (Towerism)\n\nMusic by SkyeWintrest @ New Grounds", 0, 0, { size:12, align:"center", width:FP.screen.width, color:0xffffff } );
+			//_creditText.x = (FP.screen.width - _creditText.textWidth) / 2;
+			_creditText.y = (FP.screen.height - _creditText.textHeight + _creditText.textHeight) / 2 + 110;
+			_creditText.visible = false;
+			var ctentity:Entity = addGraphic(_creditText, -5);
+			ctentity.layer = 1;
 			
 			_topTitle = addGraphic(new Image(Assets.GFX_TITLE_TOP));
 			_topTitle.y = -FP.screen.height / 2;
-
 			_bottomTitle = addGraphic(new Image(Assets.GFX_TITLE_BOTTOM));
-			_bottomTitle.y = FP.screen.height;
-
-			var topTween:VarTween = new VarTween(onBounceIn, Tween.ONESHOT);
-			topTween.tween(_topTitle, "y", 0, 1.5, Ease.bounceOut);
-			addTween(topTween, true);
-
-			var bottomTween:VarTween = new VarTween(null, Tween.ONESHOT);
-			bottomTween.tween(_bottomTitle, "y", FP.screen.height / 2, 1.5, Ease.bounceOut);
-			addTween(bottomTween, true);
-
-			_infoText = new Text("Press Z", 0, FP.screen.height - 40, {size:32, align:"center", width:FP.screen.width, alpha:0, color:0});
-			addGraphic(_infoText, -1);
-
-			_textInTween = new VarTween(onTextTweenIn, Tween.PERSIST);
-			_textOutTween = new VarTween(onTextTweenOut, Tween.PERSIST);
-
-			addTween(_textInTween, false);
-			addTween(_textOutTween, false);
+			_bottomTitle.y = FP.screen.height;		
+			Tween.to(_topTitle, 1.5, { y:0 }, onIntroEnd, Ease.bounceOut);
+			Tween.to(_bottomTitle, 1.5, { y:FP.screen.height / 2 }, null, Ease.bounceOut);
+			
+			var bCount = 0;
+			_playButton = new PunkButton( -_buttonsWidth, _buttonsStartY + _buttonsSpacing * bCount++, _buttonsWidth, _buttonsHeight, "Begin", onPlay, 0, null);
+				add(_playButton);
+			_creditButton = new PunkButton(-_buttonsWidth, _buttonsStartY + _buttonsSpacing * bCount++, _buttonsWidth, _buttonsHeight, "Credits", onCredit, 0, null);
+				add(_creditButton);
+			_musicButton = new PunkButton( -_buttonsWidth, _buttonsStartY + _buttonsSpacing * bCount++, _buttonsWidth, _buttonsHeight, (Audio.bgloop.volume) ? "Music On" : "Music Off", onMusic, 0, null);
+				add(_musicButton);
+			_creditBackButton = new PunkButton( 0 , _creditText.y + _creditText.textHeight + 10, _buttonsWidth, _buttonsHeight, "Back", onCreditBack, 0, null);
+				_creditBackButton.x = buttonCenter(_creditBackButton);
+				add(_creditBackButton);
+				_creditBackButton.layer = 1;
+				_creditBackButton.visible = false;
 		}
-
-		private function onBounceIn():void {
-			_textInTween.tween(_infoText, "alpha", 1, _textTotalTime / 2, Ease.quadIn);
-			_textInTween.start();
+		
+		private function buttonCenter(e:PunkButton) {
+			e.label.color = 0xffffff;
+			return (FP.screen.width - _buttonsWidth) / 2;
 		}
-
-		private function onTextTweenIn():void {
-			_textOutTween.tween(_infoText, "alpha", 0, _textTotalTime / 2, Ease.quadIn);
-			_textOutTween.start();
-			_hasPlayedTitle = true;
+		
+		private function updateButtonYtoEntity(e:PunkButton, o:Entity, offset:Number, mult:Number) {
+			var _offset:Number = offset * mult + 100;
+			if (e.y != o.y + _offset) {
+				e.y = o.y + _offset;
+			}
 		}
-
-		private function onTextTweenOut():void {
-			_textInTween.tween(_infoText, "alpha", 1, _textTotalTime / 2, Ease.quadOut);
-			_textInTween.start();
+		
+		private function startButtonTween(b:PunkButton, callback:Function = null) {
+			Tween.to(b, 1, { x:buttonCenter(b) }, callback, Ease.expoOut);
 		}
 
 		override public function update():void {
@@ -88,23 +100,61 @@ package worlds {
 				Audio.bgloop.loop();
 			}
 			
-			if (Input.pressed("shoot") && _hasPlayedTitle) {
-				FP.world = new GameWorld;
+			if (_startButtons) {
+				_buttonTweenTimer += FP.elapsed;
+				if (_buttonTweenTimer >= 0) startButtonTween(_playButton);
+				if (_buttonTweenTimer >= .1) startButtonTween(_creditButton);
+				if (_buttonTweenTimer >= .2) startButtonTween(_musicButton);
+				
+				updateButtonYtoEntity(_playButton, _bottomTitle, _buttonsSpacing, 0);
+				updateButtonYtoEntity(_creditButton, _bottomTitle, _buttonsSpacing, 1);
+				updateButtonYtoEntity(_musicButton, _bottomTitle, _buttonsSpacing, 2);
 			}
-			
-			if (Input.check("color")) {
-				_showCreditText.visible = true;
-				_creditText.visible = false;
-				if (!_creditUnlocked) {
-					_creditUnlocked = true;
-					GV.ACHIEVEMENTS.unlock(Achievements.ACH_CREDITS, false);
-				}
-			} else {
-				_showCreditText.visible = false;
-				_creditText.visible = true;
-			}
-			
 			super.update();
+		}
+		
+		private function onPlay():void {
+			Tween.to(_topTitle, 1, { y: -FP.screen.height / 2 }, onTransitionPlay, Ease.quadIn);
+			Tween.to(_bottomTitle, 1, { y: FP.screen.height }, null, Ease.quadIn);
+			//FP.world = new GameWorld;
+		}
+		
+		private function onCredit():void {
+			_creditText.visible = true;
+			_creditBackButton.visible = true;
+			Tween.to(_bottomTitle, 0.7, {y:FP.screen.height + _bottomTitle.height}, awardTrophy, Ease.quadOut);
+			
+		}
+		
+		private function awardTrophy():void {
+			GV.ACHIEVEMENTS.unlock(Achievements.ACH_CREDITS);
+		}
+		
+		private function onCreditBack():void {
+			Tween.to(_bottomTitle, 0.7, {y:FP.screen.height / 2}, creditsHide, Ease.quadOut);
+		}
+		
+		private function creditsHide():void {
+			_creditText.visible = false;
+			_creditBackButton.visible = false;
+		}
+		
+		private function onMusic():void {
+			if (Audio.bgloop.volume) {
+				Audio.bgloop.volume = 0;
+				_musicButton.label.text = "Music Off";
+			} else {
+				Audio.bgloop.volume = 1;
+				_musicButton.label.text = "Music On";
+			}
+		}
+			
+		private function onIntroEnd():void {
+			_startButtons = true;
+		}
+		
+		private function onTransitionPlay():void {
+			FP.world = new GameWorld;
 		}
 	}
 }

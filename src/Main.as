@@ -21,15 +21,13 @@ package {
 		public function Main():void {
 		
 			super(320, 600, 60, false);
-			FP.screen.color = GC.SCREEN_COLOR;
+			FP.world = new SplashWorld;
 
 			//FP.console.enable();
 			FP.randomizeSeed();
 		}
 
 		override public function init():void {
-			
-			FP.world = new TitleWorld;
 			super.init();
 			var hi:Object = FP.flashvars;
 			
