@@ -17,7 +17,7 @@ package bullets {
 
 		public function Bullet(x:Number = 0, y:Number = 0) {
 			super(x, y);			
-			this.setHitbox(2, 2);
+			this.setHitbox(4, 4);
 			this.graphic = _gfx;
 			_gfx.scrollX = 0;
 			_gfx.scrollY = 0;
@@ -31,7 +31,7 @@ package bullets {
 		}
 
 		public function destroy():void {
-			this.world.recycle(this);
+			world.recycle(this);
 		}
 		
 		protected function set myColor(s:String):void {

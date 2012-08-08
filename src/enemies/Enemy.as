@@ -2,6 +2,7 @@ package enemies {
 
 	import net.flashpunk.*;
 	import net.flashpunk.graphics.Image;
+	import net.flashpunk.graphics.Spritemap;
 
 	import bullets.*;
 
@@ -12,69 +13,88 @@ package enemies {
 	public class Enemy extends Entity {
 
 		protected static const WHITE:String = "white";
-		protected static const NONE:String = "white"; //creating a default value
 		protected static const BLACK:String = "black";
 
 		protected static const OUT_OF_BOUNDS:String = "outofbounds";
 		protected static const DEATH:String = "death";
 		
+		protected static const SMALL:String = "small";
+		protected static const LARGE:String = "large";
+		
+		private var _value:int;
 		private var _explosionType:String;
-		private var _gfx:Image = new Image(Assets.GFX_ENEMY);
-		private var rotationSpeed:Number = 180;
+		private var _myColor:String;
+		private var _expSize:String;
+		private var _speed:Number;
 
-		public function Enemy(x:Number = 0, y:Number = 0) {
+		//this Enemy template supports graphic.Image
+		//you have to set up a hitbox in a child class if it uses graphic.Spritemap
+		public function Enemy(gfx:Graphic, explodeSize:String, x:Number = 0, y:Number = 0) {
 			super(x, y);
-			_gfx.centerOO();
-			this.graphic = _gfx;
-			
-			_gfx.scrollX = 0;
-			_gfx.scrollY = 0;
-			
-			this.setHitbox(20, 20, _gfx.width / 2, _gfx.height / 2);
+			graphic = gfx;
+			gfx.centerOO();
+			gfx.scrollX = 0;
+			gfx.scrollY = 0;
+			var img:Image = Image(graphic)
+			this.setHitbox(img.width, img.height, img.width / 2, img.height / 2);
 			this.type = GC.TYPE_ENEMY;
 			layer = GC.LAYER_ENEMY;
-
-			myColor = NONE; //use default value
+			myColor = WHITE;
+			_expSize = explodeSize;
 		}
 
+		//it is better to override the hit method if you wish to only change bullet collide action
 		override public function update():void {
-			y += FP.elapsed * GC.ENEMY_SPEED;
-			if (y > FP.screen.height + 5)
+			y += FP.elapsed * _speed;
+			if (y > FP.screen.height + Image(graphic).height)
 				destroy(OUT_OF_BOUNDS);
 			var b:Bullet = this.collideTypes([GC.TYPE_WHITE_BULLET, GC.TYPE_BLACK_BULLET], x, y) as Bullet;
 			if (b != null) {
 				hit(b);
 			}
-			
-			_gfx.angle += rotationSpeed * FP.elapsed;
 		}
 
+		//You must override this method if you wish to do something different then destroy instantly
 		protected function hit(b:Bullet):void {
-			//Stub for children
-			b.world.remove(b);
+			b.destroy();
 		}
-
+		
 		public function destroy(reason:String):void {
 			if (reason == DEATH) {
-				GV.SCORE += GC.ENEMY_VALUE;
+				GV.SCORE += _value;
 				GV.CURRENT_GUI.updateScore();
-				GV.PARTICLE_CONTROLLER.explodeStandard(x, y, _explosionType);
-				if (myColor == GV.LAST_COLOR_KILLED) GV.KILL_COLOR_INROW++;
-				else {
-					GV.LAST_COLOR_KILLED = myColor;
-					GV.KILL_COLOR_INROW = 1;
-				}
+				explode(_explosionType);
 			}
-			this.world.recycle(this);
+			this.world.remove(this);
 		}
-
+		
+		protected function explode(exp:String):void {
+			GV.PARTICLE_CONTROLLER.explodeStandard(x, y, exp);
+		}
+		
+		protected function set value(v:int):void {
+			_value = v;
+		}
+		
 		protected function set myColor(s:String):void {
 			Image(graphic).color = (s == WHITE) ? 0xffffff : 0x0;
-			this._explosionType = (s == WHITE) ? GC.EXP_ENEMY_W : GC.EXP_ENEMY_B;
+			if (s == WHITE && _expSize == SMALL) _explosionType = GC.EXP_SMALL_W;
+			else if (s == WHITE && _expSize == LARGE) _explosionType = GC.EXP_LARGE_W;
+			else if (s == BLACK && _expSize == SMALL) _explosionType = GC.EXP_SMALL_B;
+			else if (s == BLACK && _expSize == LARGE) _explosionType = GC.EXP_LARGE_B;
+			_myColor = s;
 		}
 		
 		protected function get myColor():String {
-			return (Image(graphic).color == 0x0) ? Enemy.BLACK : Enemy.WHITE;
+			return _myColor;
+		}
+		
+		protected function get speed():Number {
+			return _speed;
+		}
+		
+		protected function set speed(value:Number):void {
+			_speed = value;
 		}
 	}
 }

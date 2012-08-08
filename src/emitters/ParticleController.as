@@ -22,30 +22,30 @@ package emitters {
 			
 			//player explosions
 			
-			_amount[GC.EXP_PLAYER_W] = 50;
-			_amount[GC.EXP_PLAYER_B] = _amount[GC.EXP_PLAYER_W];
-			_explosionEmitter.newType(GC.EXP_PLAYER_W, [0]);
-			_explosionEmitter.setAlpha(GC.EXP_PLAYER_W, 1, 0, Ease.quadIn);
-			_explosionEmitter.setColor(GC.EXP_PLAYER_W, 0xffffff, 0xffffff);
-			_explosionEmitter.setMotion(GC.EXP_PLAYER_W, 0, _amount[GC.EXP_PLAYER_W] * multiplyDistance, _amount[GC.EXP_PLAYER_W] / divideDuration, 360, -_amount[GC.EXP_PLAYER_W] * multiplyDistance + addRangeDistance, _amount[GC.EXP_PLAYER_W] / divideRangeDuration, Ease.quadOut);
+			_amount[GC.EXP_LARGE_W] = 50;
+			_amount[GC.EXP_LARGE_B] = _amount[GC.EXP_LARGE_W];
+			_explosionEmitter.newType(GC.EXP_LARGE_W, [0]);
+			_explosionEmitter.setAlpha(GC.EXP_LARGE_W, 1, 0, Ease.quadIn);
+			_explosionEmitter.setColor(GC.EXP_LARGE_W, 0xffffff, 0xffffff);
+			_explosionEmitter.setMotion(GC.EXP_LARGE_W, 0, _amount[GC.EXP_LARGE_W] * multiplyDistance, _amount[GC.EXP_LARGE_W] / divideDuration, 360, -_amount[GC.EXP_LARGE_W] * multiplyDistance + addRangeDistance, _amount[GC.EXP_LARGE_W] / divideRangeDuration, Ease.quadOut);
 			
-			_explosionEmitter.newType(GC.EXP_PLAYER_B, [0]);
-			_explosionEmitter.setAlpha(GC.EXP_PLAYER_B, 1, 0, Ease.quadIn);
-			_explosionEmitter.setColor(GC.EXP_PLAYER_B, 0x0, 0x0);
-			_explosionEmitter.setMotion(GC.EXP_PLAYER_B, 0, _amount[GC.EXP_PLAYER_B] * multiplyDistance, _amount[GC.EXP_PLAYER_B] / divideDuration, 360, -_amount[GC.EXP_PLAYER_B] * multiplyDistance + addRangeDistance, _amount[GC.EXP_PLAYER_B] / divideRangeDuration, Ease.quadOut);
+			_explosionEmitter.newType(GC.EXP_LARGE_B, [0]);
+			_explosionEmitter.setAlpha(GC.EXP_LARGE_B, 1, 0, Ease.quadIn);
+			_explosionEmitter.setColor(GC.EXP_LARGE_B, 0x0, 0x0);
+			_explosionEmitter.setMotion(GC.EXP_LARGE_B, 0, _amount[GC.EXP_LARGE_B] * multiplyDistance, _amount[GC.EXP_LARGE_B] / divideDuration, 360, -_amount[GC.EXP_LARGE_B] * multiplyDistance + addRangeDistance, _amount[GC.EXP_LARGE_B] / divideRangeDuration, Ease.quadOut);
 			
 			//enemy explosions
-			_amount[GC.EXP_ENEMY_W] = 20;
-			_amount[GC.EXP_ENEMY_B] = _amount[GC.EXP_ENEMY_W];
-			_explosionEmitter.newType(GC.EXP_ENEMY_W, [0]);
-			_explosionEmitter.setAlpha(GC.EXP_ENEMY_W, 1, 0, Ease.quadIn);
-			_explosionEmitter.setColor(GC.EXP_ENEMY_W, 0xffffff, 0xffffff);
-			_explosionEmitter.setMotion(GC.EXP_ENEMY_W, 0, _amount[GC.EXP_ENEMY_W] * multiplyDistance, _amount[GC.EXP_ENEMY_W] / divideDuration, 360, -_amount[GC.EXP_ENEMY_W] * multiplyDistance + addRangeDistance, _amount[GC.EXP_ENEMY_W] / divideRangeDuration, Ease.quadOut);
+			_amount[GC.EXP_SMALL_W] = 20;
+			_amount[GC.EXP_SMALL_B] = _amount[GC.EXP_SMALL_W];
+			_explosionEmitter.newType(GC.EXP_SMALL_W, [0]);
+			_explosionEmitter.setAlpha(GC.EXP_SMALL_W, 1, 0, Ease.quadIn);
+			_explosionEmitter.setColor(GC.EXP_SMALL_W, 0xffffff, 0xffffff);
+			_explosionEmitter.setMotion(GC.EXP_SMALL_W, 0, _amount[GC.EXP_SMALL_W] * multiplyDistance, _amount[GC.EXP_SMALL_W] / divideDuration, 360, -_amount[GC.EXP_SMALL_W] * multiplyDistance + addRangeDistance, _amount[GC.EXP_SMALL_W] / divideRangeDuration, Ease.quadOut);
 			
-			_explosionEmitter.newType(GC.EXP_ENEMY_B, [0]);
-			_explosionEmitter.setAlpha(GC.EXP_ENEMY_B, 1, 0, Ease.quadIn);
-			_explosionEmitter.setColor(GC.EXP_ENEMY_B, 0x0, 0x0);
-			_explosionEmitter.setMotion(GC.EXP_ENEMY_B, 0, _amount[GC.EXP_ENEMY_B] * multiplyDistance, _amount[GC.EXP_ENEMY_B] / divideDuration, 360, -_amount[GC.EXP_ENEMY_B] * multiplyDistance + addRangeDistance, _amount[GC.EXP_ENEMY_B] / divideRangeDuration, Ease.quadOut);
+			_explosionEmitter.newType(GC.EXP_SMALL_B, [0]);
+			_explosionEmitter.setAlpha(GC.EXP_SMALL_B, 1, 0, Ease.quadIn);
+			_explosionEmitter.setColor(GC.EXP_SMALL_B, 0x0, 0x0);
+			_explosionEmitter.setMotion(GC.EXP_SMALL_B, 0, _amount[GC.EXP_SMALL_B] * multiplyDistance, _amount[GC.EXP_SMALL_B] / divideDuration, 360, -_amount[GC.EXP_SMALL_B] * multiplyDistance + addRangeDistance, _amount[GC.EXP_SMALL_B] / divideRangeDuration, Ease.quadOut);
 			
 			_explosionEmitter.relative = false;
 			graphic = _explosionEmitter;

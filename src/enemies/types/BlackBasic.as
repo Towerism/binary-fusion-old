@@ -1,15 +1,16 @@
-package enemies {
+package enemies.types {
 
 	import net.flashpunk.graphics.Image;
 
 	import bullets.*;
+	import enemies.Enemy;
 
 	/**
 	 * { Description of BlackEnemy.as here }
 	 * @author Martin L. Fracker, Jr.
 	 */
-	public class BlackEnemy extends Enemy {
-		public function BlackEnemy() {
+	public class BlackBasic extends EnemyBasic {
+		public function BlackBasic() {
 			super();
 			myColor = Enemy.BLACK;
 		}

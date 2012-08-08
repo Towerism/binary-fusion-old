@@ -20,8 +20,10 @@ package {
 		//Non Player costants
 		public static const BULLET_SPEED:int = 200;		
 		public static const ENEMY_SPAWN_CHANCE:Number = 0.01;
-		public static const ENEMY_VALUE:int = 100;
-		public static const ENEMY_SPEED:int = 80;
+		public static const ENEMY_BASIC_VALUE:int = 100;
+		public static const ENEMY_LARGE_VALUE:int = 150;
+		public static const ENEMY_BASIC_SPEED:Number = 80;
+		public static const ENEMY_LARGE_SPEED:Number = 50;
 		
 		//Player / Game constants
 		public static const PLAYER_AXIS_X:Number = FP.height - 50;
@@ -37,10 +39,10 @@ package {
 		public static const TYPE_ENEMY:String = "enemy";
 		
 		//explosion particle types
-		public static const EXP_PLAYER_W:String = "explodeplayerwhite";
-		public static const EXP_PLAYER_B:String = "explodeplayerblack";
-		public static const EXP_ENEMY_W:String = "explodeenemywhite";
-		public static const EXP_ENEMY_B:String = "explodeenemyblack";
+		public static const EXP_LARGE_W:String = "explodeplayerwhite";
+		public static const EXP_LARGE_B:String = "explodeplayerblack";
+		public static const EXP_SMALL_W:String = "explodeenemywhite";
+		public static const EXP_SMALL_B:String = "explodeenemyblack";
 		
 		//draw sequence
 		private static var lc:Number = 0;

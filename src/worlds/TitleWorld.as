@@ -18,9 +18,10 @@ package worlds {
 		private var _topTitle:Entity;
 		private var _bottomTitle:Entity;
 		private var _bottomTitleNormalY:Entity;
+		private var _backdrop:Backdrop
 		
 		private var _versionText:Text;	
-		private var _creditText:Text;	
+		private var _creditText:PunkText;	
 		private var _creditUnlocked:Boolean = false;
 		
 		private var _playButton:PunkButton;
@@ -41,27 +42,29 @@ package worlds {
 		}
 
 		override public function begin():void {
-			var b:Backdrop = new Backdrop(Assets.GFX_BACKDROP, true, true);
-			b.alpha = 0.3;
-			var bentity:Entity = addGraphic(b);
-			bentity.layer = 200;
+			_backdrop = new Backdrop(Assets.GFX_BACKDROP, true, true);
+			addGraphic(_backdrop, 200);
 			
 			_versionText = new Text("v"+GC.VERSION, -2, 2, {size:12, align:"right", width:FP.screen.width, color:0xffffff});
 			addGraphic(_versionText, -5);
 			
-			_creditText = new Text("Programming / Art by Martin (Towerism)\n\nMusic by SkyeWintrest @ New Grounds", 0, 0, { size:12, align:"center", width:FP.screen.width, color:0xffffff } );
+			_creditText = new PunkText("[Programming / Art] by Martin (Towerism)\n\n[Music] by SkyeWintrest @ New Grounds", 0, 0, { size:12, align:"center", width:FP.screen.width, color:0xffffff, outlineColor:0x000000, outlineStrength:2} );
 			//_creditText.x = (FP.screen.width - _creditText.textWidth) / 2;
 			_creditText.y = (FP.screen.height - _creditText.textHeight + _creditText.textHeight) / 2 + 110;
 			_creditText.visible = false;
-			var ctentity:Entity = addGraphic(_creditText, -5);
-			ctentity.layer = 1;
+			addGraphic(_creditText, 1);
 			
 			_topTitle = addGraphic(new Image(Assets.GFX_TITLE_TOP));
 			_topTitle.y = -FP.screen.height / 2;
 			_bottomTitle = addGraphic(new Image(Assets.GFX_TITLE_BOTTOM));
-			_bottomTitle.y = FP.screen.height;		
-			Tween.to(_topTitle, 1.5, { y:0 }, onIntroEnd, Ease.bounceOut);
-			Tween.to(_bottomTitle, 1.5, { y:FP.screen.height / 2 }, null, Ease.bounceOut);
+			_bottomTitle.y = FP.screen.height;
+			if (GV.GAME_IS_NEW) {
+				Tween.to(_topTitle, 1.5, { y:0 }, onIntroEnd, Ease.bounceOut);
+				Tween.to(_bottomTitle, 1.5, { y:FP.screen.height / 2 }, null, Ease.bounceOut);
+			} else {
+				Tween.to(_topTitle, 1, { y:0 }, onIntroEnd, Ease.quadOut);
+				Tween.to(_bottomTitle, 1, { y:FP.screen.height / 2 }, null, Ease.quadOut);
+			}
 			
 			var bCount = 0;
 			_playButton = new PunkButton( -_buttonsWidth, _buttonsStartY + _buttonsSpacing * bCount++, _buttonsWidth, _buttonsHeight, "Begin", onPlay, 0, null);
@@ -102,14 +105,15 @@ package worlds {
 			
 			if (_startButtons) {
 				_buttonTweenTimer += FP.elapsed;
-				if (_buttonTweenTimer >= 0) startButtonTween(_playButton);
-				if (_buttonTweenTimer >= .1) startButtonTween(_creditButton);
-				if (_buttonTweenTimer >= .2) startButtonTween(_musicButton);
-				
-				updateButtonYtoEntity(_playButton, _bottomTitle, _buttonsSpacing, 0);
-				updateButtonYtoEntity(_creditButton, _bottomTitle, _buttonsSpacing, 1);
-				updateButtonYtoEntity(_musicButton, _bottomTitle, _buttonsSpacing, 2);
+				if (_buttonTweenTimer >= 0 && _buttonTweenTimer <= .1) startButtonTween(_playButton);
+				if (_buttonTweenTimer >= .1 && _buttonTweenTimer <= .2) startButtonTween(_creditButton);
+				if (_buttonTweenTimer >= .2) startButtonTween(_musicButton, onButtonsDone);
 			}
+			
+			updateButtonYtoEntity(_playButton, _bottomTitle, _buttonsSpacing, 0);
+			updateButtonYtoEntity(_creditButton, _bottomTitle, _buttonsSpacing, 1);
+			updateButtonYtoEntity(_musicButton, _bottomTitle, _buttonsSpacing, 2);
+			
 			super.update();
 		}
 		
@@ -147,6 +151,10 @@ package worlds {
 				Audio.bgloop.volume = 1;
 				_musicButton.label.text = "Music On";
 			}
+		}
+		
+		private function onButtonsDone():void {
+			_startButtons = false;
 		}
 			
 		private function onIntroEnd():void {

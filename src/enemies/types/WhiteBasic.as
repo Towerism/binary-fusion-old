@@ -1,13 +1,14 @@
-package enemies {
+package enemies.types {
 
 	import bullets.*;
+	import enemies.Enemy;
 
 	/**
 	 * { Description of WhiteEnemy.as here }
 	 * @author Martin L. Fracker, Jr.
 	 */
-	public class WhiteEnemy extends Enemy {
-		public function WhiteEnemy() {
+	public class WhiteBasic extends EnemyBasic {
+		public function WhiteBasic() {
 			super();
 			myColor = Enemy.WHITE;
 		}

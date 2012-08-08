@@ -12,12 +12,12 @@ package {
 	public class GV {
 		
 		public static var CURRENT_GUI:GUI = null;
-		public static var NO_ENEMIES:Boolean = true;
+		public static var GAME_IS_NEW:Boolean = true;
 		public static var GUI_INIT:Boolean = false;
 		public static var LIVES:Number = GC.MAX_LIVES;
 		public static var PARTICLE_CONTROLLER:ParticleController = null;
 		public static var PLAYER:Player = null;
-		public static var SCORE:Number = 0;
+		public static var SCORE:int = 0;
 		
 		//will use for achievements
 		public static var ACHIEVEMENTS:Achievements = null
@@ -27,7 +27,7 @@ package {
 		
 		public static function reset():void {
 			CURRENT_GUI = new GUI;
-			NO_ENEMIES = true;
+			GAME_IS_NEW = true;
 			GUI_INIT = false;
 			LIVES = GC.MAX_LIVES;
 			PARTICLE_CONTROLLER = new ParticleController;			

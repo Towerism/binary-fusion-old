@@ -27,14 +27,17 @@ package gamejolt {
 		private var _gfx:Image = new Image(Assets.GFX_ACHIEVE);
 		private var _glist:Graphiclist;
 		private var _tempTrophyData:Array = [];
+		
+		private var _nextUnlock:Boolean = true;
 		private var _unlockChain:Array = [];
 		private var _isTopChain:Array = [];
 		private var _isTop:Boolean = true;
+		
 		private var _unlockTween:VarTween;
 		private var _fadeTween:VarTween;
 		private var _waitTween:VarTween;
 		public var _wait:int = 0;
-		private var _nextUnlock:Boolean = true;
+		
 		private var _achNameText:Text;
 		private var _achUnlockText:Text;
 		private var _achUnlockTextOffsetY:Number;

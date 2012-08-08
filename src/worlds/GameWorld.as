@@ -1,12 +1,13 @@
 package worlds {
 
+	import enemies.types.EnemyLarge;
 	import gamejolt.Achievements;
 	import net.flashpunk.*;
 	import net.flashpunk.graphics.*;
 	import net.flashpunk.utils.Input;
 	import net.flashpunk.utils.Key;
 
-	import enemies.*;
+	import enemies.types.*;
 	import players.Player;
 
 	/**
@@ -25,7 +26,7 @@ package worlds {
 			this.add(GV.CURRENT_GUI);
 			
 			var b:Backdrop = new Backdrop(Assets.GFX_BACKDROP, true, true);
-			b.alpha = 0.3;
+			b.alpha = 0.5;
 			
 			var e:Entity = new Entity;
 			e.graphic = b;
@@ -34,17 +35,22 @@ package worlds {
 		}
 
 		override public function update():void {
-			var isTrue:Boolean = (GV.NO_ENEMIES) ? (GV.PLAYER.y == GC.PLAYER_AXIS_X) : true;
+			var isTrue:Boolean = (GV.GAME_IS_NEW) ? (GV.PLAYER.y == GC.PLAYER_AXIS_X) : true;
 			if (isTrue && (this.typeCount(GC.TYPE_ENEMY) == 0 || FP.random < GC.ENEMY_SPAWN_CHANCE)) {
 				var e:Entity;
-				e = (FP.rand(2)) ? create(WhiteEnemy) : create(BlackEnemy);
+				e = (FP.rand(2)) ? add(new WhiteBasic) : add(new BlackBasic);
 				e.x = FP.clamp(FP.rand(FP.width), e.width, FP.width - e.width);
-				e.y = -GC.ENEMY_SPEED;
-				GV.NO_ENEMIES = false;
+				e.y = -50;
+				GV.GAME_IS_NEW = false;
+				if (FP.random < .3) {
+					var f:Entity = add(new EnemyLarge);
+					f.x = FP.clamp(FP.rand(FP.width), f.width, FP.width - f.width);
+					f.y = -25 * (FP.rand(15) + 1);
+				}
 			}
 
 			if (this.classCount(Player) == 0 && GV.PARTICLE_CONTROLLER.particleCount == 0 && GV.GUI_INIT) {
-				GV.PLAYER = new Player(FP.halfWidth, GC.PLAYER_START_Y, (GV.NO_ENEMIES) ? false : true)
+				GV.PLAYER = new Player(FP.halfWidth, GC.PLAYER_START_Y, (GV.GAME_IS_NEW) ? false : true)
 				add(GV.PLAYER);
 			}
 			

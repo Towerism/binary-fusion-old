@@ -19,7 +19,7 @@ package players {
 
 		private var _asset:Class = Assets.GFX_PLAYER;
 		private var _gfx:Image = new Image(_asset);	
-		private var _explosionType:String = GC.EXP_PLAYER_W;
+		private var _explosionType:String = GC.EXP_LARGE_W;
 		private var _speedX:Number = GC.PLAYER_SPEED;
 		private var _currentBullet:Class = WhiteBullet;
 		private var _introTween:VarTween;
@@ -98,7 +98,7 @@ package players {
 		}
 		
 		private function checkTweenActive():Boolean {
-			return (_flipInTween.active || _flipOutTween.active)
+			return (_flipInTween.active || _flipOutTween.active || _introTween.active)
 		}
 		
 		private function onIntroComplete():void {
@@ -125,10 +125,10 @@ package players {
 		public function set color(c:uint):void {
 			_gfx.color = c;
 			if (c == 0x0) {
-				_explosionType = GC.EXP_PLAYER_B;
+				_explosionType = GC.EXP_LARGE_B;
 				_currentBullet = BlackBullet;				
 			} else {
-				_explosionType = GC.EXP_PLAYER_W;
+				_explosionType = GC.EXP_LARGE_W;
 				_currentBullet = WhiteBullet;
 			}
 		}
