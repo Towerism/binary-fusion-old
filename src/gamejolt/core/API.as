@@ -184,7 +184,6 @@ package gamejolt.core{
 			}
 			var signature:String = encryptURL(tempURL, privKey);
 			var finalURL:String = tempURL + "&signature=" + signature;
-			trace(finalURL);
 			return finalURL;
 		}
 

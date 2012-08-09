@@ -1,4 +1,4 @@
-package bullets {
+package bullets.player {
 
 	import net.flashpunk.graphics.Image;
 
@@ -6,11 +6,11 @@ package bullets {
 	 * { Description of BlackBullet.as here }
 	 * @author Martin L. Fracker, Jr.
 	 */
-	public class BlackBullet extends Bullet {
+	public class BlackBullet extends BulletPlayer {
 		public function BlackBullet(x:Number = 0, y:Number = 0) {
 			super(x, y);
-			this.type = GC.TYPE_BLACK_BULLET;
-			myColor = Bullet.BLACK;
+			Image(graphic).color = 0x0;
+			type = GC.TYPE_BLACK_BULLET_P;
 		}
 	}
 }

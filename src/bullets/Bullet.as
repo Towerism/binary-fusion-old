@@ -9,34 +9,38 @@ package bullets {
 	 * @author Martin L. Fracker, Jr.
 	 */
 	public class Bullet extends Entity {
-		
-		protected static var WHITE:String = "white";
-		protected static var BLACK:String = "black";
-		
-		private var _gfx:Image = new Image(new BitmapData(4, 4, false, 0xffffff));
 
-		public function Bullet(x:Number = 0, y:Number = 0) {
-			super(x, y);			
-			this.setHitbox(4, 4);
-			this.graphic = _gfx;
-			_gfx.scrollX = 0;
-			_gfx.scrollY = 0;
+		private var _rotation:Number;
+		private var _speed:Number;
+
+		public function Bullet(x:Number = 0, y:Number = 0, dir:Number = 270) {
+			super(x, y);
+			var gfx:Image = Image(graphic);
+			graphic.centerOO();
+			this.setHitbox(gfx.width, gfx.height, gfx.width / 2, gfx.height / 2);
+			graphic.scrollX = 0;
+			graphic.scrollY = 0;
 			layer = GC.LAYER_BULLET;
+			_rotation = dir;
 		}
 
 		override public function update():void {
-			y -= FP.elapsed * GC.BULLET_SPEED;
-			if (y < -height)
-				this.destroy();
+			var radAngle:Number = _rotation * Math.PI / 180;
+			x += FP.elapsed * (_speed * Math.cos(radAngle));
+			y += FP.elapsed * (_speed * Math.sin(radAngle));
+			if (x < -width || x > FP.screen.width + width || y < -height || y > FP.screen.height + height) this.destroy();
 		}
 
 		public function destroy():void {
-			world.recycle(this);
+			world.remove(this);
 		}
 		
-		protected function set myColor(s:String):void {
-			Image(graphic).color = (s == WHITE) ? 0xffffff : 0x000000;
-			this.type = (s == WHITE) ? GC.TYPE_WHITE_BULLET : GC.TYPE_BLACK_BULLET;
+		protected function get speed():Number {
+			return _speed;
+		}
+		
+		protected function set speed(spd:Number):void {
+			_speed = spd;
 		}
 	}
 }

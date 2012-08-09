@@ -33,14 +33,14 @@ package enemies.types {
 		override protected function hit(b:Bullet):void {
 			super.hit(b);
 			if (_isDual) {
-				if (b.type == GC.TYPE_WHITE_BULLET) {
+				if (b.type == GC.TYPE_WHITE_BULLET_P) {
 					explode(GC.EXP_SMALL_B);
 					myColor = Enemy.WHITE;
-					_bulletKillType = GC.TYPE_BLACK_BULLET;
+					_bulletKillType = GC.TYPE_BLACK_BULLET_P;
 				} else {
 					explode(GC.EXP_SMALL_W);
 					myColor = Enemy.BLACK;
-					_bulletKillType = GC.TYPE_WHITE_BULLET;
+					_bulletKillType = GC.TYPE_WHITE_BULLET_P;
 				}
 				_gfx.play("notdual");
 				_isDual = false;

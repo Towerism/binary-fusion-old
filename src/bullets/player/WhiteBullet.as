@@ -1,13 +1,13 @@
-package bullets {
+package bullets.player {
 
 	/**
 	 * { Description of WhiteBullet.as here }
 	 * @author Martin L. Fracker, Jr.
 	 */
-	public class WhiteBullet extends Bullet {
+	public class WhiteBullet extends BulletPlayer {
 		public function WhiteBullet(x:Number = 0, y:Number = 0) {
 			super(x, y);
-			myColor = Bullet.WHITE;
+			type = GC.TYPE_WHITE_BULLET_P;
 		}
 	}
 }

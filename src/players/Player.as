@@ -1,5 +1,5 @@
 package players {
-
+	
 	import flash.display.BitmapData;
 	import net.flashpunk.*;
 	import net.flashpunk.graphics.*;
@@ -7,7 +7,8 @@ package players {
 	import net.flashpunk.tweens.misc.VarTween;
 	import net.flashpunk.utils.*;
 
-	import bullets.*;
+	import bullets.Bullet;
+	import bullets.player.*;
 
 	/**
 	 * ...
@@ -77,18 +78,19 @@ package players {
 			}
 
 			if (Input.pressed("shoot") && !checkTweenActive()) {
-				var b:Bullet = this.world.create(_currentBullet) as Bullet;
-				b.x = x - 2;
-				b.y = y - 2;
+				var b:Bullet = this.world.add(new _currentBullet) as Bullet;
+				b.x = x;
+				b.y = y;
 			}
 
 			if (Input.pressed("color") && !checkTweenActive()) {
 				_flipInTween.tween(_gfx, "scaleX", 0, FLIP_SPEED / 2, Ease.quadOut);
 				_flipInTween.start();
 			}
-			
-			if (!_introTween.active && !_isInvincible && this.collide(GC.TYPE_ENEMY, x, y)) {
+			var b:Bullet = this.collide(GC.TYPE_ENEMY_BULLET, x, y) as Bullet;
+			if ((!_introTween.active && !_isInvincible) && (this.collide(GC.TYPE_ENEMY, x, y) || b != null)) {
 				destroy();
+				if (b != null) b.destroy();
 			}
 		}
 

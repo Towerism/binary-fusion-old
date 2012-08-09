@@ -1,5 +1,6 @@
 package enemies {
 
+	import enemies.types.EnemyBomb;
 	import net.flashpunk.*;
 	import net.flashpunk.graphics.Image;
 	import net.flashpunk.graphics.Spritemap;
@@ -17,6 +18,7 @@ package enemies {
 
 		protected static const OUT_OF_BOUNDS:String = "outofbounds";
 		protected static const DEATH:String = "death";
+		protected static const DETONATE:String = "detonate";
 		
 		protected static const SMALL:String = "small";
 		protected static const LARGE:String = "large";
@@ -32,23 +34,22 @@ package enemies {
 		public function Enemy(gfx:Graphic, explodeSize:String, x:Number = 0, y:Number = 0) {
 			super(x, y);
 			graphic = gfx;
-			gfx.centerOO();
-			gfx.scrollX = 0;
-			gfx.scrollY = 0;
+			graphic.centerOO();
+			graphic.scrollX = 0;
+			graphic.scrollY = 0;
 			var img:Image = Image(graphic)
 			this.setHitbox(img.width, img.height, img.width / 2, img.height / 2);
 			this.type = GC.TYPE_ENEMY;
 			layer = GC.LAYER_ENEMY;
-			myColor = WHITE;
 			_expSize = explodeSize;
 		}
 
 		//it is better to override the hit method if you wish to only change bullet collide action
 		override public function update():void {
-			y += FP.elapsed * _speed;
+			if (_speed) y += FP.elapsed * _speed;
 			if (y > FP.screen.height + Image(graphic).height)
 				destroy(OUT_OF_BOUNDS);
-			var b:Bullet = this.collideTypes([GC.TYPE_WHITE_BULLET, GC.TYPE_BLACK_BULLET], x, y) as Bullet;
+			var b:Bullet = this.collideTypes([GC.TYPE_WHITE_BULLET_P, GC.TYPE_BLACK_BULLET_P], x, y) as Bullet;
 			if (b != null) {
 				hit(b);
 			}
@@ -59,22 +60,48 @@ package enemies {
 			b.destroy();
 		}
 		
-		public function destroy(reason:String):void {
-			if (reason == DEATH) {
-				GV.SCORE += _value;
-				GV.CURRENT_GUI.updateScore();
-				explode(_explosionType);
-			}
-			this.world.remove(this);
-		}
-		
 		protected function explode(exp:String):void {
 			GV.PARTICLE_CONTROLLER.explodeStandard(x, y, exp);
 		}
 		
+		public function destroy(reason:String):void {
+			if (reason == DEATH) {
+				onDeath();
+			}
+			
+			if (reason == DETONATE) {
+				onDetonate();
+			}
+			
+			if (reason == OUT_OF_BOUNDS) {
+				onOutOfBounds();
+			}
+			
+			this.world.remove(this);
+		}
+		
+		//override these three functions if you need to do specific actions when these events occur
+		protected function onDeath():void {
+			GV.SCORE += _value;
+			GV.CURRENT_GUI.updateScore();
+			explode(_explosionType);
+		}
+		
+		protected function onDetonate():void { }
+		
+		protected function onOutOfBounds():void { }
+		
 		protected function set value(v:int):void {
 			_value = v;
 		}
+	
+		protected function get speed():Number {
+			return _speed;
+		}
+		
+		protected function set speed(value:Number):void {
+			_speed = value;
+		}	
 		
 		protected function set myColor(s:String):void {
 			Image(graphic).color = (s == WHITE) ? 0xffffff : 0x0;
@@ -87,14 +114,6 @@ package enemies {
 		
 		protected function get myColor():String {
 			return _myColor;
-		}
-		
-		protected function get speed():Number {
-			return _speed;
-		}
-		
-		protected function set speed(value:Number):void {
-			_speed = value;
 		}
 	}
 }

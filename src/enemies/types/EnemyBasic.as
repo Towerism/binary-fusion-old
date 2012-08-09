@@ -17,7 +17,6 @@ package enemies.types {
 
 		public function EnemyBasic(x:Number = 0, y:Number = 0) {
 			super(_gfx, Enemy.SMALL);
-			
 			value = GC.ENEMY_BASIC_VALUE;
 			speed = GC.ENEMY_BASIC_SPEED;
 		}
