@@ -1,6 +1,10 @@
 package {
+	
 	import emitters.ParticleController;
 	import enemies.Enemy;
+	import enemies.formations.Formation;
+	import enemies.formations.Formations;
+	import enemies.waves.Waves;
 	import gamejolt.Achievements;
 	import players.Player;
 	import ui.GUI;
@@ -25,6 +29,10 @@ package {
 		public static var KILL_COLOR_INROW:int = 0;
 		public static var LAST_COLOR_KILLED:String = "none";
 		
+		//Enemy spawning objects
+		public static var FORMATIONS:Formations = null;
+		public static var WAVES:Waves = null;
+		
 		public static function reset():void {
 			CURRENT_GUI = new GUI;
 			GAME_IS_NEW = true;
@@ -33,6 +41,9 @@ package {
 			PARTICLE_CONTROLLER = new ParticleController;			
 			PLAYER = new Player;
 			SCORE = 0;
+			
+			FORMATIONS = new Formations;
+			WAVES = new Waves;
 		}
 	}
 }

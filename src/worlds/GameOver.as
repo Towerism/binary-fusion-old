@@ -48,7 +48,13 @@ package worlds {
 			add(_musicButton);
 		}
 		
-		private function startButtonTween(b:PunkButton, callback:Function = null) {
+		override public function end():void {
+			remove(_retryButton);
+			remove(_menuButton);
+			remove(_musicButton);
+		}
+		
+		private function startButtonTween(b:PunkButton, callback:Function = null):void {
 			Tween.to(b, .5, { alpha:1 }, callback, Ease.quadOut);
 		}
 		

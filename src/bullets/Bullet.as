@@ -16,7 +16,7 @@ package bullets {
 		public function Bullet(x:Number = 0, y:Number = 0, dir:Number = 270) {
 			super(x, y);
 			var gfx:Image = Image(graphic);
-			graphic.centerOO();
+			gfx.centerOO();
 			this.setHitbox(gfx.width, gfx.height, gfx.width / 2, gfx.height / 2);
 			graphic.scrollX = 0;
 			graphic.scrollY = 0;

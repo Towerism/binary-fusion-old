@@ -78,15 +78,16 @@ package players {
 			}
 
 			if (Input.pressed("shoot") && !checkTweenActive()) {
-				var b:Bullet = this.world.add(new _currentBullet) as Bullet;
-				b.x = x;
-				b.y = y;
+				var e:Entity = this.world.add(new _currentBullet);
+				e.x = x;
+				e.y = y;
 			}
 
 			if (Input.pressed("color") && !checkTweenActive()) {
 				_flipInTween.tween(_gfx, "scaleX", 0, FLIP_SPEED / 2, Ease.quadOut);
 				_flipInTween.start();
 			}
+			
 			var b:Bullet = this.collide(GC.TYPE_ENEMY_BULLET, x, y) as Bullet;
 			if ((!_introTween.active && !_isInvincible) && (this.collide(GC.TYPE_ENEMY, x, y) || b != null)) {
 				destroy();
@@ -104,7 +105,7 @@ package players {
 		}
 		
 		private function onIntroComplete():void {
-			
+			GV.GAME_IS_NEW = false;
 		}
 		
 		private function onFlipInComplete():void {

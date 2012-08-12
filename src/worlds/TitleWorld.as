@@ -66,7 +66,7 @@ package worlds {
 				Tween.to(_bottomTitle, 1, { y:FP.screen.height / 2 }, null, Ease.quadOut);
 			}
 			
-			var bCount = 0;
+			var bCount:int = 0;
 			_playButton = new PunkButton( -_buttonsWidth, _buttonsStartY + _buttonsSpacing * bCount++, _buttonsWidth, _buttonsHeight, "Begin", onPlay, 0, null);
 				add(_playButton);
 			_creditButton = new PunkButton(-_buttonsWidth, _buttonsStartY + _buttonsSpacing * bCount++, _buttonsWidth, _buttonsHeight, "Credits", onCredit, 0, null);
@@ -80,19 +80,19 @@ package worlds {
 				_creditBackButton.visible = false;
 		}
 		
-		private function buttonCenter(e:PunkButton) {
+		private function buttonCenter(e:PunkButton):uint {
 			e.label.color = 0xffffff;
 			return (FP.screen.width - _buttonsWidth) / 2;
 		}
 		
-		private function updateButtonYtoEntity(e:PunkButton, o:Entity, offset:Number, mult:Number) {
+		private function updateButtonYtoEntity(e:PunkButton, o:Entity, offset:Number, mult:Number):void {
 			var _offset:Number = offset * mult + 100;
 			if (e.y != o.y + _offset) {
 				e.y = o.y + _offset;
 			}
 		}
 		
-		private function startButtonTween(b:PunkButton, callback:Function = null) {
+		private function startButtonTween(b:PunkButton, callback:Function = null):void {
 			Tween.to(b, 1, { x:buttonCenter(b) }, callback, Ease.expoOut);
 		}
 

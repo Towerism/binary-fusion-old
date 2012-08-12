@@ -25,8 +25,8 @@ package enemies.types {
 		public function EnemyBomb(x:Number = 0, y:Number = 0, endY:Number = 300) {
 			super(_gfx, Enemy.SMALL);
 			
-			_speed = 0;
-			_value = GC.ENEMY_BOMB_VALUE;
+			speed = 0;
+			value = GC.ENEMY_BOMB_VALUE;
 			Tween.to(this, 3 , { y:endY }, onPosition, Ease.quadOut);
 		}
 		
@@ -48,8 +48,8 @@ package enemies.types {
 		
 		override protected function onDetonate():void {
 			var color:uint = (myColor == Enemy.WHITE) ? 0xffffff : 0x0;
-			for (var i:int; i < 360; i += 15) {
-				world.add(new BulletBomb(color, x, y, i))
+			for (var i:int; i < 360; i += 20) {
+				world.add(new BulletBomb(color, x, y, i));
 			}
 		}
 	}

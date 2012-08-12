@@ -14,11 +14,10 @@ package enemies.types.color {
 		public function BombWhite() {
 			super();
 			myColor = Enemy.WHITE;
-			trace(this);
 		}
 
 		override protected function hit(b:Bullet):void {
-			if (b.type == GC.TYPE_WHITE_BULLET_P) {
+			if (b.type == GC.TYPE_BLACK_BULLET_P) {
 				destroy(Enemy.DEATH);
 			}
 			super.hit(b);

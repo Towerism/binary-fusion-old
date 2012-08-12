@@ -31,10 +31,10 @@ package enemies {
 
 		//this Enemy template supports graphic.Image
 		//you have to set up a hitbox in a child class if it uses graphic.Spritemap
-		public function Enemy(gfx:Graphic, explodeSize:String, x:Number = 0, y:Number = 0) {
+		public function Enemy(gfx:Image, explodeSize:String, x:Number = 0, y:Number = 0) {
 			super(x, y);
 			graphic = gfx;
-			graphic.centerOO();
+			gfx.centerOO();
 			graphic.scrollX = 0;
 			graphic.scrollY = 0;
 			var img:Image = Image(graphic)

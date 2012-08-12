@@ -14,7 +14,6 @@ package enemies.types.color {
 		public function BombBlack() {
 			super();
 			myColor = Enemy.BLACK;
-			trace(this);
 		}
 
 		override protected function hit(b:Bullet):void {

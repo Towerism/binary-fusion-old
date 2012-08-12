@@ -1,5 +1,7 @@
 package {
 	
+	import enemies.formations.Formations;
+	import enemies.waves.Waves;
 	import net.flashpunk.FP;
 	import net.flashpunk.Sfx;
 
@@ -31,7 +33,7 @@ package {
 		//Player / Game constants
 		public static const PLAYER_AXIS_X:Number = FP.height - 50;
 		public static const PLAYER_START_Y:Number = FP.height + 10;
-		public static const PLAYER_SPEED:Number = 200;
+		public static const PLAYER_SPEED:Number = 300;
 		public static const PLAYER_BULLET_SPEED:int = 200;
 		public static const PLAYER_SPAWN_WAIT:Number = 0.5;
 		public static const PLAYER_INVINCIBLE_TIME:Number = PLAYER_SPAWN_WAIT + 2.7;
