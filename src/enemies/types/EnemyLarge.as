@@ -47,6 +47,7 @@ package enemies.types {
 			} else {
 				if (b.type == _bulletKillType) {
 					this.destroy(Enemy.DEATH);
+					GV.color_killed(myColor);
 				}
 			}
 		}

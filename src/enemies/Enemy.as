@@ -1,9 +1,9 @@
 package enemies {
 
 	import enemies.types.EnemyBomb;
+	import flash.events.EventDispatcher;
 	import net.flashpunk.*;
-	import net.flashpunk.graphics.Image;
-	import net.flashpunk.graphics.Spritemap;
+	import net.flashpunk.graphics.*;
 
 	import bullets.*;
 
@@ -29,8 +29,6 @@ package enemies {
 		private var _expSize:String;
 		private var _speed:Number;
 
-		//this Enemy template supports graphic.Image
-		//you have to set up a hitbox in a child class if it uses graphic.Spritemap
 		public function Enemy(gfx:Image, explodeSize:String, x:Number = 0, y:Number = 0) {
 			super(x, y);
 			graphic = gfx;
@@ -76,7 +74,6 @@ package enemies {
 			if (reason == OUT_OF_BOUNDS) {
 				onOutOfBounds();
 			}
-			
 			this.world.remove(this);
 		}
 		

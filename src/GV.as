@@ -37,6 +37,8 @@ package {
 			CURRENT_GUI = new GUI;
 			GAME_IS_NEW = true;
 			GUI_INIT = false;
+			KILL_COLOR_INROW = 0;
+			LAST_COLOR_KILLED = "none";
 			LIVES = GC.MAX_LIVES;
 			PARTICLE_CONTROLLER = new ParticleController;			
 			PLAYER = new Player;
@@ -44,6 +46,14 @@ package {
 			
 			FORMATIONS = new Formations;
 			WAVES = new Waves;
+		}
+		
+		public static function color_killed(c:String):void {
+			if (c == LAST_COLOR_KILLED || LAST_COLOR_KILLED == "none") KILL_COLOR_INROW++;
+			else {
+				LAST_COLOR_KILLED = c
+				KILL_COLOR_INROW = 0;
+			}
 		}
 	}
 }

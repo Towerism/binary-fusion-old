@@ -11,7 +11,7 @@ package {
 	 */
 	public class GC {
 		//Build info
-		public static const VERSION:String = "0.2.11";
+		public static const VERSION:String = "0.3.1";
 		
 		//Achievement goals
 		public static const GOAL_RACIST:int = 50;
@@ -27,14 +27,14 @@ package {
 		public static const ENEMY_LARGE_VALUE:int = 150;
 		public static const ENEMY_BOMB_VALUE:int = 150;
 		
-		public static const ENEMY_BASIC_SPEED:Number = 80;
-		public static const ENEMY_LARGE_SPEED:Number = 50;
+		public static const ENEMY_BASIC_SPEED:Number = 90;
+		public static const ENEMY_LARGE_SPEED:Number = 80;
 		
 		//Player / Game constants
 		public static const PLAYER_AXIS_X:Number = FP.height - 50;
 		public static const PLAYER_START_Y:Number = FP.height + 10;
-		public static const PLAYER_SPEED:Number = 300;
-		public static const PLAYER_BULLET_SPEED:int = 200;
+		public static const PLAYER_SPEED:Number = 200;
+		public static const PLAYER_BULLET_SPEED:int = 500;
 		public static const PLAYER_SPAWN_WAIT:Number = 0.5;
 		public static const PLAYER_INVINCIBLE_TIME:Number = PLAYER_SPAWN_WAIT + 2.7;
 		public static const MAX_LIVES:Number = 3;

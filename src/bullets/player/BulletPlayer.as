@@ -12,7 +12,7 @@ package bullets.player {
 	 */
 	public class BulletPlayer extends Bullet {
 		
-		private var _gfx:Image = new Image(new BitmapData(4, 4, false, 0xffffff));
+		private var _gfx:Image = new Image(new BitmapData(4, 7, false, 0xffffff));
 
 		public function BulletPlayer(x:Number = 0, y:Number = 0, dir:Number = 270) {
 			graphic = _gfx;

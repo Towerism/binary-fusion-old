@@ -13,12 +13,15 @@ package enemies.waves {
 		
 		private var _nextWave:Boolean = true;
 		private var _active:Boolean = false;
-		private var _interval:Number = 5;
-		private var _timer:Number = 1;
+		private var _interval:Number = 0;
+		private var _timer:Number = 0;
 		private var _waves:Vector.<Wave> = new Vector.<Wave>;
 		
 		public function WaveController() {
-			add(GV.WAVES.WAVE_3Bas_2Bm);
+			var len:int = GV.WAVES.collection.length;
+			for (var i:int; i < len; i++) {
+				add(GV.WAVES.collection[i]);
+			}
 		}
 		
 		private function add(w:Wave):void {
@@ -27,14 +30,13 @@ package enemies.waves {
 		}
 		
 		public function nextWave():void {
-			_waves[0].start();
+			_waves[FP.rand(_waves.length)].start();
 			_nextWave = false;
 			_active = true;
 			_timer = 0;
 		}
 		
 		override public function added():void {
-			trace(GV.FORMATIONS);
 			world.add(GV.FORMATIONS);
 			world.add(GV.WAVES);
 		}

@@ -1,5 +1,5 @@
 package enemies.waves {
-	
+
 	import events.WaveEvent;
 	import flash.events.EventDispatcher;
 	import flash.geom.Point;
@@ -20,14 +20,14 @@ package enemies.waves {
 		private var _pos:Vector.<Point> = new Vector.<Point>;
 		private var _start:Boolean = false;
 		
-		private var _name:String;
+		private var _name:String = "";
 		private var _timer:Number = 0;
 		private var _dispatch:EventDispatcher = new EventDispatcher();
 		
 		public function Wave() {
 		}
 		
-		public function define(name:String):void {
+		public function setName(name:String):void {
 			_name = name;
 		}
 		
@@ -49,7 +49,6 @@ package enemies.waves {
 		}
 		
 		private function spawn(f:Formation):void {
-			
 		}
 		
 		override public function update():void {
@@ -60,15 +59,15 @@ package enemies.waves {
 					if (_timer >= _times[i] && !_spawned[i]) {
 						_forms[i].spawn(_pos[i].x, _pos[i].y);
 						_spawned[i] = true;
-						if (i >= len) complete();
 					}
-				}
+				}			
+				if (FP.world.typeCount(GC.TYPE_ENEMY) == 0 && _timer > 1) complete();
 			}
 		}
 		
 		internal function complete():void {
 			trace("wave completed");
-			_start = false;		
+			_start = false;
 			_dispatch.dispatchEvent(new WaveEvent(WaveEvent.COMPLETE, _name));
 		}
 		

@@ -48,7 +48,7 @@ package enemies.types {
 		
 		override protected function onDetonate():void {
 			var color:uint = (myColor == Enemy.WHITE) ? 0xffffff : 0x0;
-			for (var i:int; i < 360; i += 20) {
+			for (var i:int; i < 360; i += 30) {
 				world.add(new BulletBomb(color, x, y, i));
 			}
 		}

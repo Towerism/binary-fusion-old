@@ -19,6 +19,7 @@ package enemies.types.color {
 		override protected function hit(b:Bullet):void {
 			if (b.type == GC.TYPE_WHITE_BULLET_P) {
 				destroy(Enemy.DEATH);
+				GV.color_killed(myColor);
 			}
 			super.hit(b);
 		}
