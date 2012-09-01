@@ -12,6 +12,7 @@ package enemies.waves {
 	 */
 	public class Waves extends Entity{
 		private const _collection:Vector.<Wave> = new Vector.<Wave>;
+		private var _queue:Vector.<Wave> = new Vector.<Wave>;
 		
 		public const WAVE_3Bas:Wave = new Wave;
 		public const WAVE_3Bas_2Bm:Wave = new Wave;
@@ -112,11 +113,23 @@ package enemies.waves {
 			FP.world.add(w);
 			w.add(form, point, time);
 			
-			if (first) _collection.push(w);
+			if (first) {
+				_collection.push(w);
+				_queue.push(w);
+			}
+		}
+		
+		public function queueRemove(index:int):void {
+			_queue.splice(index, 1);
+			if (_queue.length <= 0) _queue = _collection;
 		}
 		
 		public function get collection():Vector.<Wave> {
 			return _collection;
+		}
+		
+		public function get queue():Vector.<Wave> {
+			return _queue;
 		}
 	}
 }

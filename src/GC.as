@@ -22,6 +22,8 @@ package {
 		//Enemy costants
 		public static const ENEMY_BULLET_SPEED:Number = 150;
 		public static const ENEMY_SPAWN_CHANCE:Number = 0.01;
+		public static const ENEMY_BASIC_AVG_SHOOT_PERSEC:Number = (1 / 3) * (1 / 5);
+		public static const ENEMY_BASIC_SHOOT_CHANCE:Number = 1 * ENEMY_BASIC_AVG_SHOOT_PERSEC / 60;
 		
 		public static const ENEMY_BASIC_VALUE:int = 100;
 		public static const ENEMY_LARGE_VALUE:int = 150;

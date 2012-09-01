@@ -25,7 +25,7 @@ package bullets {
 		}
 
 		override public function update():void {
-			var radAngle:Number = _rotation * Math.PI / 180;
+			var radAngle:Number = -_rotation * Math.PI / 180;
 			x += FP.elapsed * (_speed * Math.cos(radAngle));
 			y += FP.elapsed * (_speed * Math.sin(radAngle));
 			if (x < -width || x > FP.screen.width + width || y < -height || y > FP.screen.height + height) this.destroy();

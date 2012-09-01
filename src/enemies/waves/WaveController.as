@@ -16,6 +16,7 @@ package enemies.waves {
 		private var _interval:Number = 0;
 		private var _timer:Number = 0;
 		private var _waves:Vector.<Wave> = new Vector.<Wave>;
+		private var _queue:Vector.<Wave> = GV.WAVES.queue;
 		
 		public function WaveController() {
 			var len:int = GV.WAVES.collection.length;
@@ -30,7 +31,10 @@ package enemies.waves {
 		}
 		
 		public function nextWave():void {
-			_waves[FP.rand(_waves.length)].start();
+			var randIndex:int = FP.rand(_queue.length);
+			_queue[randIndex].start();
+			GV.WAVES.queueRemove(randIndex);
+			trace(_queue);
 			_nextWave = false;
 			_active = true;
 			_timer = 0;

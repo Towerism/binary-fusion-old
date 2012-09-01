@@ -14,7 +14,7 @@ package bullets.player {
 		
 		private var _gfx:Image = new Image(new BitmapData(4, 7, false, 0xffffff));
 
-		public function BulletPlayer(x:Number = 0, y:Number = 0, dir:Number = 270) {
+		public function BulletPlayer(x:Number = 0, y:Number = 0, dir:Number = 90) {
 			graphic = _gfx;
 			super(x, y, dir);
 			

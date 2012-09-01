@@ -2,8 +2,10 @@ package enemies {
 
 	import enemies.types.EnemyBomb;
 	import flash.events.EventDispatcher;
+	import flash.geom.Point;
 	import net.flashpunk.*;
 	import net.flashpunk.graphics.*;
+	import ui.Score;
 
 	import bullets.*;
 
@@ -79,8 +81,7 @@ package enemies {
 		
 		//override these three functions if you need to do specific actions when these events occur
 		protected function onDeath():void {
-			GV.SCORE += _value;
-			GV.CURRENT_GUI.updateScore();
+			new Score(_value, new Point(x, y));
 			explode(_explosionType);
 		}
 		

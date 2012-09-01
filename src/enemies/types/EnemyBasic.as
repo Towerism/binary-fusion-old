@@ -1,5 +1,6 @@
 package enemies.types {
 
+	import bullets.enemy.BulletEnemy;
 	import net.flashpunk.*;
 	import net.flashpunk.graphics.Image;
 
@@ -23,6 +24,11 @@ package enemies.types {
 
 		override public function update():void {
 			super.update();
+			if (Math.random() < GC.ENEMY_BASIC_SHOOT_CHANCE) {
+				var angle:Number = FP.angle(x, y, GV.PLAYER.x, GV.PLAYER.y);
+				world.add(new BulletEnemy(x, y, angle));
+				trace(angle);
+			}
 			_gfx.angle += _rotationSpeed * FP.elapsed;
 		}
 	}

@@ -15,7 +15,7 @@ package enemies.types {
 	 */
 	public class EnemyBomb extends Enemy {
 		
-		private var _gfx:Image = new Image(Assets.GFX_ENEMY_BASIC);
+		private var _gfx:Image = new Image(Assets.GFX_ENEMY_BOMB);
 		private var _rotationSpeed:Number = 270;
 		
 		private var _detonateWait:Number = 1;
@@ -48,7 +48,7 @@ package enemies.types {
 		
 		override protected function onDetonate():void {
 			var color:uint = (myColor == Enemy.WHITE) ? 0xffffff : 0x0;
-			for (var i:int; i < 360; i += 30) {
+			for (var i:int; i < 360; i += 20) {
 				world.add(new BulletBomb(color, x, y, i));
 			}
 		}

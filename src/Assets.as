@@ -14,6 +14,9 @@ package {
 		[Embed(source="../assets/enemies/bigenemy.png")]
 		public static const GFX_ENEMY_LARGE:Class;
 		
+		[Embed(source="../assets/enemies/BombEnemy.png")]
+		public static const GFX_ENEMY_BOMB:Class;
+		
 		[Embed(source="../assets/title/title_01.png")]
 		public static const GFX_TITLE_TOP:Class;
 		
